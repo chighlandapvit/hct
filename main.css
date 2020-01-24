@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #1f1f1f;
+  color: #fffafa;
+  font-size: 1em;
+}
+
+#header,
+#footer {
+  max-width: 933px;
+  width: 100%;
+  height: 5.5vh;
+  max-height: 2.5em;
+  background-color: #fffafa;
+  color: #1f1f1f;
+}
+
+#mainContainer {
+  max-height: 497px;
+  max-width: 933px;
+  height: 497px;
+  width: 933px;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.tinyImage {
+  margin: 0 5%;
+  width: 10%;
+}
+
+.littleImage {
+  margin: 2%;
+  width: 15%;
+}
+
+.bigImage {
+  margin: 0 2%;
+  width: 50%;
+}
+
+.video {
+  margin: 2%;
+  width: 50%;
+}
+
+.navBtn {
+  margin: 0.2em;
+}
+
+.btn {
+  padding: 0.6em;
+  background-color: #1f1f1f;
+  color: #fffafa;
+  border: solid 0.05em #fffafa;
+  font-weight: bold;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: #fffafa;
+  color: #1f1f1f;
+  border: solid 0.05em #1f1f1f;
+}
+
+.btn:active {
+  filter: brightness(80%);
+  background-color: #1f1f1f;
+  color: #fffafa;
+  border: solid 0.05em #0000ff;
+  -webkit-text-stroke: 0.02em #0000ff;
+}
+
+.orderedList {
+  color: #0000ff;
+}
+
+.unorderedList {
+  list-style-type: disc;
+  color: #0000ff;
+}
+
+.optionDefault {
+  color: #696969;
+}
+
+.optionOver:hover,
+.choiceBtn:hover {
+  cursor: pointer;
+  color: #0000ff;
+}

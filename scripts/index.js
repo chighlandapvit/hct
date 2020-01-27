@@ -4,6 +4,7 @@ let mainContainer = document.getElementById('mainContainer'),
 
 let pages = [],
   pageNum = [],
+  pageReadout = document.getElementById('pageReadout'),
   currentPage,
   currentPageIndex;
 
@@ -25,15 +26,19 @@ function loader() {
         };
         pageNum.push(pageIndex);
       });
+      prevBtn.setAttribute('disabled', '');
     }
     // assign page numbers to each page in the array
     pageNum.forEach(function(item, index) {
       Object.assign(item, { pageNumber: index });
     });
     // create first page and append to view
-    currentPageIndex = 0;
-    currentPage = pageNum[0].pageElements;
-    createDisplay(currentPage);
+    currentPage = pageNum[0];
+    currentPageIndex = currentPage.pageNumber + 1;
+    createDisplay(currentPage.pageElements);
+    // display current page number in nav bar
+    pageReadout.innerHTML =
+      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
   }
 
   // load previous page
@@ -43,11 +48,22 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex--;
 
+    if (currentPageIndex == 1) {
+      prevBtn.setAttribute('disabled', '');
+    }
+    if (currentPageIndex < pageNum.length) {
+      nextBtn.removeAttribute('disabled');
+    }
+
     for (let i = 0; i < pageNum.length; i++) {
-      if (pageNum[i].pageNumber == currentPageIndex) {
+      if (pageNum[i].pageNumber == currentPageIndex - 1) {
         currentPage = pageNum[i];
       }
     }
+
+    pageReadout.innerHTML =
+      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
+    // create HTML page and append to mainContainer
     createDisplay(currentPage.pageElements);
   });
   // load next page
@@ -57,11 +73,21 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex++;
 
+    if (currentPageIndex == pageNum.length) {
+      nextBtn.setAttribute('disabled', '');
+    }
+    if (currentPageIndex > 1) {
+      prevBtn.removeAttribute('disabled');
+    }
+
     for (let i = 0; i < pageNum.length; i++) {
-      if (pageNum[i].pageNumber == currentPageIndex) {
+      if (pageNum[i].pageNumber == currentPageIndex - 1) {
         currentPage = pageNum[i];
       }
     }
+
+    pageReadout.innerHTML =
+      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
     // create HTML page and append to mainContainer
     createDisplay(currentPage.pageElements);
   });

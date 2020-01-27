@@ -66,18 +66,20 @@ function makeList(listContent) {
     listContentArr.forEach(function(item) {
       let li = document.createElement('li');
       li.innerHTML = item[1];
+      addClass(li, 'li');
       ul.appendChild(li);
     });
-    addClass(ul, 'unorderedList');
+    addClass(ul, 'ul');
     return ul;
   } else if (listContent.listType == 'ol') {
     let ol = document.createElement('ol');
     listContentArr.forEach(function(item) {
       let li = document.createElement('li');
       li.innerHTML = item[1];
+      addClass(li, 'li');
       ol.appendChild(li);
     });
-    addClass(ol, 'orderedList');
+    addClass(ol, 'ol');
     return ol;
   }
 }

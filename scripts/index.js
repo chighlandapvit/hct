@@ -27,6 +27,8 @@ function loader() {
         pageNum.push(pageIndex);
       });
       prevBtn.setAttribute('disabled', '');
+      removeClass(prevBtn, 'btn');
+      addClass(prevBtn, 'disabledBtn');
     }
     // assign page numbers to each page in the array
     pageNum.forEach(function(item, index) {
@@ -50,9 +52,13 @@ function loader() {
 
     if (currentPageIndex == 1) {
       prevBtn.setAttribute('disabled', '');
+      removeClass(prevBtn, 'btn');
+      addClass(prevBtn, 'disabledBtn');
     }
     if (currentPageIndex < pageNum.length) {
       nextBtn.removeAttribute('disabled');
+      removeClass(nextBtn, 'disabledBtn');
+      addClass(nextBtn, 'btn');
     }
 
     for (let i = 0; i < pageNum.length; i++) {
@@ -75,9 +81,13 @@ function loader() {
 
     if (currentPageIndex == pageNum.length) {
       nextBtn.setAttribute('disabled', '');
+      removeClass(nextBtn, 'btn');
+      addClass(nextBtn, 'disabledBtn');
     }
     if (currentPageIndex > 1) {
       prevBtn.removeAttribute('disabled');
+      removeClass(prevBtn, 'disabledBtn');
+      addClass(prevBtn, 'btn');
     }
 
     for (let i = 0; i < pageNum.length; i++) {

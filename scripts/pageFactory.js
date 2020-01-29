@@ -90,7 +90,8 @@ function makeList(listContent) {
 
 function makeImg(imgContent) {
   let img = document.createElement('img');
-  img.setAttribute('src', 'images/' + imgContent.href);
+  // img.setAttribute('src', 'images/' + imgContent.href);
+  img.setAttribute('src', imgContent.href);
   img.setAttribute('alt', imgContent.altText);
   img.setAttribute('draggable', imgContent.draggable);
 
@@ -115,7 +116,8 @@ function makeImg(imgContent) {
 function makeVideo(videoContent) {
   let video = document.createElement('video');
   addClass(video, 'video');
-  video.setAttribute('src', 'video/' + videoContent.href);
+  // video.setAttribute('src', 'video/' + videoContent.href);
+  video.setAttribute('src', videoContent.href);
   video.setAttribute('alt', videoContent.altText);
   video.setAttribute('controls', '');
   // video.setAttribute('autoplay', '');
@@ -247,7 +249,8 @@ function makeDragAndDrop(dragContent) {
     addClass(dragItem, 'dragItem');
     dragItem.setAttribute('draggable', item[1].draggable);
     dragItem.setAttribute('ondragstart', 'onDragStart(event)');
-    dragItem.setAttribute('src', 'images/' + item[1].href);
+    // dragItem.setAttribute('src', 'images/' + item[1].href);
+    dragItem.setAttribute('src', item[1].href);
     dragItem.setAttribute('alt', item[1].altText);
 
     dragSlot.appendChild(dragItem);

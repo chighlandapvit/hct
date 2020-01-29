@@ -7,7 +7,7 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'big',
-          href: 'plane.jfif',
+          href: 'https://i.imgur.com/Ay6uTAe.jpg',
           altText: 'An airplane in a forest.',
           floatSide: 'right'
         },
@@ -27,7 +27,7 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'big',
-          href: 'spaceman.jpg',
+          href: 'https://i.imgur.com/4sBJ2nT.jpg',
           altText: 'An astronaut floating above the Earth.',
           floatSide: 'left'
         },
@@ -38,13 +38,13 @@ const courseData = {
         image2: {
           draggable: 'false',
           size: 'tiny',
-          href: 'rocketship.png',
+          href: 'https://i.imgur.com/Jk2TIdg.png',
           altText: 'A rocketship blasting off.'
         },
         image3: {
           draggable: 'false',
           size: 'tiny',
-          href: 'moon.png',
+          href: 'https://i.imgur.com/h8Bu1aQ.png',
           altText: "The Earth's moon, Luna."
         }
       }
@@ -70,19 +70,19 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'little',
-          href: 'little1.png',
+          href: 'https://i.imgur.com/jsk9Dmt.png',
           altText: 'A beaker filled with chemicals.'
         },
         image2: {
           draggable: 'false',
           size: 'little',
-          href: 'little2.png',
+          href: 'https://i.imgur.com/fwr8d08.png',
           altText: 'A beaker filled with chemicals.'
         },
         image3: {
           draggable: 'false',
           size: 'little',
-          href: 'little3.png',
+          href: 'https://i.imgur.com/1QcFc4w.png',
           altText: 'A beaker filled with chemicals.'
         }
       }
@@ -92,7 +92,7 @@ const courseData = {
       elements: {
         heading: 'Lesson 1 Page 2',
         video: {
-          href: 'test.mp4',
+          href: 'video/fly.mp4',
           altText: 'A test video.',
           floatSide: 'right'
         },
@@ -102,11 +102,12 @@ const courseData = {
         list1: {
           listType: 'ol',
           listItems: {
-            listItem1: 'Item 1 is a Rabbit',
-            listItem2: "Item 2 is the Rabbit's house",
-            listItem3: "Item 3 is the Rabbit's food stash",
-            listItem4: 'Item 4 is the Snake',
-            listItem5: "Item 5 is the Rabbit inside of the Snake's belly"
+            listItem1: 'It takes wings to fly',
+            listItem2: 'The clouds can get quite cold',
+            listItem3: "Airplanes usually don't have feathers",
+            listItem4:
+              'There is often a pilot and a copilot flying an aircraft',
+            listItem5: 'Superman can fly'
           }
         }
       }
@@ -176,17 +177,17 @@ const courseData = {
           items: {
             image1: {
               draggable: 'true',
-              href: 'option1.png',
+              href: 'https://i.imgur.com/szak2vY.png',
               altText: 'The first selection option.'
             },
             image2: {
               draggable: 'true',
-              href: 'option2.png',
+              href: 'https://i.imgur.com/CP9pvXu.png',
               altText: 'The second selection option.'
             },
             image3: {
               draggable: 'true',
-              href: 'option3.png',
+              href: 'https://i.imgur.com/ZG67skY.png',
               altText: 'The third selection option.'
             }
           },

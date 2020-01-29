@@ -171,7 +171,7 @@ body {
 }
 
 .dropBox p {
-  align-self: initial;
+  margin-top: 1%;
   font-size: 0.8em;
 }
 
@@ -199,15 +199,15 @@ body {
   margin: 6% auto;
   width: 90%;
   height: 6.5em;
-  border: dashed 0.05em #fffafa;
+  border-bottom: dashed 0.05em #fffafa;
 }
 
 .dropSlot {
   margin: 1% auto;
   width: 90%;
   height: 6.5em;
-  border: inset 0.05em #fffafa;
-  background: content-box no-repeat url('images/stripes.png');
+  border: solid 0.05em #fffafa;
+  background: content-box no-repeat url('https://i.imgur.com/Q0Lm97c.png');
   background-size: cover;
 }
 

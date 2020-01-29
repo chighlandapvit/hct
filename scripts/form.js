@@ -36,14 +36,17 @@ function dragSubmit() {
 
   for (let i = 0; i < dropSlot.length; i++) {
     if (dropSlot[i].children.length > 0) {
-      dropItemArr.push(dropSlot[i]);
+      let userMatch = [];
+      userMatch.push(dropSlot[i].id, dropSlot[i].children[0].id);
+      dropItemArr.push(userMatch);
+      // dropItemArr.push(dropSlot[i]);
     }
   }
 
   if (dropItemArr.length < dropBoxArr.length) {
     alert('You must match all of the items with their definitions!');
   } else {
-    console.log('you matched em');
+    console.log(dropItemArr);
   }
 }
 

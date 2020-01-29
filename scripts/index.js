@@ -106,3 +106,47 @@ function loader() {
     createDisplay(currentPage[1].elements);
   });
 }
+
+let menuBtn = document.getElementById('menuBtn'),
+  menu = document.getElementById('menu');
+
+menuBtn.addEventListener('click', function() {
+  if (hasClass(menu, 'invisible')) {
+    removeClass(menu, 'invisible');
+  } else {
+    addClass(menu, 'invisible');
+  }
+});
+
+// tocBtn.addEventListener("click", function() {
+//   tocMenu.classList.toggle("invisible");
+//   if (!helpBtn.hasAttribute("disabled") & !resBtn.hasAttribute("disabled")) {
+//     helpBtn.setAttribute("disabled", "true");
+//     resBtn.setAttribute("disabled", "true");
+//   } else {
+//     helpBtn.removeAttribute("disabled");
+//     resBtn.removeAttribute("disabled");
+//   }
+// });
+
+// helpBtn.addEventListener("click", function() {
+//   helpMenu.classList.toggle("invisible");
+//   if (!tocBtn.hasAttribute("disabled") & !resBtn.hasAttribute("disabled")) {
+//     tocBtn.setAttribute("disabled", "true");
+//     resBtn.setAttribute("disabled", "true");
+//   } else {
+//     tocBtn.removeAttribute("disabled");
+//     resBtn.removeAttribute("disabled");
+//   }
+// });
+
+// resBtn.addEventListener("click", function() {
+//   resMenu.classList.toggle("invisible");
+//   if (!tocBtn.hasAttribute("disabled") & !helpBtn.hasAttribute("disabled")) {
+//     tocBtn.setAttribute("disabled", "true");
+//     helpBtn.setAttribute("disabled", "true");
+//   } else {
+//     tocBtn.removeAttribute("disabled");
+//     helpBtn.removeAttribute("disabled");
+//   }
+// });

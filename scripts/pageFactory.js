@@ -1,7 +1,7 @@
 function createDisplay(item) {
-  let createdElements = [],
+  let workingItemArr = Object.entries(item),
     section = document.createElement('section'),
-    workingItemArr = Object.entries(item);
+    createdElements = [];
 
   // determine which elements to create
   workingItemArr.forEach(function(item) {
@@ -25,10 +25,12 @@ function createDisplay(item) {
       createdElements.push(makeDragAndDrop(item[1]));
     }
   });
+
   // add elements to section and append to mainContainer
   createdElements.forEach(function(createdElement) {
     section.appendChild(createdElement);
   });
+
   mainContainer.appendChild(section);
 }
 
@@ -36,18 +38,21 @@ function createDisplay(item) {
 function makeH1(h1Content) {
   let h1 = document.createElement('h1');
   h1.innerHTML = h1Content;
+
   return h1;
 }
 
 function makeH2(h2Content) {
   let h2 = document.createElement('h2');
   h2.innerHTML = h2Content;
+
   return h2;
 }
 
 function makeP(pContent) {
   let p = document.createElement('p');
   p.innerHTML = pContent;
+
   return p;
 }
 
@@ -56,23 +61,29 @@ function makeList(listContent) {
   // determine list type
   if (listContent.listType == 'ul') {
     let ul = document.createElement('ul');
+    addClass(ul, 'ul');
+
     listContentArr.forEach(function(item) {
       let li = document.createElement('li');
-      li.innerHTML = item[1];
       addClass(li, 'li');
+      li.innerHTML = item[1];
+
       ul.appendChild(li);
     });
-    addClass(ul, 'ul');
+
     return ul;
   } else if (listContent.listType == 'ol') {
     let ol = document.createElement('ol');
+    addClass(ol, 'ol');
+
     listContentArr.forEach(function(item) {
       let li = document.createElement('li');
-      li.innerHTML = item[1];
       addClass(li, 'li');
+      li.innerHTML = item[1];
+
       ol.appendChild(li);
     });
-    addClass(ol, 'ol');
+
     return ol;
   }
 }
@@ -82,6 +93,7 @@ function makeImg(imgContent) {
   img.setAttribute('src', 'images/' + imgContent.href);
   img.setAttribute('alt', imgContent.altText);
   img.setAttribute('draggable', imgContent.draggable);
+
   // determine img size category
   if (imgContent.size == 'tiny') {
     addClass(img, 'tinyImage');
@@ -96,173 +108,170 @@ function makeImg(imgContent) {
   } else if (imgContent.floatSide == 'right') {
     addClass(img, 'floatRight');
   }
+
   return img;
 }
 
 function makeVideo(videoContent) {
   let video = document.createElement('video');
+  addClass(video, 'video');
   video.setAttribute('src', 'video/' + videoContent.href);
   video.setAttribute('alt', videoContent.altText);
   video.setAttribute('controls', '');
   // video.setAttribute('autoplay', '');
-  addClass(video, 'video');
+
   // determine video float orientation
   if (videoContent.floatSide == 'left') {
     addClass(video, 'floatLeft');
   } else if (videoContent.floatSide == 'right') {
     addClass(video, 'floatRight');
   }
+
   return video;
 }
 
 function makeChallengeForm(formContent) {
-  let form = document.createElement('form'),
-    formSubmit = document.createElement('input');
+  let form = document.createElement('form');
   form.setAttribute('id', 'choiceForm');
   form.setAttribute('onsubmit', 'choiceSubmit(event)');
+
+  let formSubmit = document.createElement('input');
   formSubmit.setAttribute('id', 'formSubmit');
+  addClass(formSubmit, 'btn');
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'SUBMIT');
-  addClass(formSubmit, 'btn');
 
-  let formArr = [];
-  let inputArr = Object.entries(formContent.options);
+  let inputArr = Object.entries(formContent.options),
+    formArr = [];
 
   inputArr.forEach(function(item) {
-    let input = document.createElement('input'),
-      label = document.createElement('label'),
-      br = document.createElement('br');
-    label.innerHTML = item[1];
-    label.setAttribute('for', item[0]);
-    addClass(label, 'optionOver');
+    let input = document.createElement('input');
     input.setAttribute('id', item[0]);
+    addClass(input, 'choiceBtn');
     input.setAttribute('type', formContent.type);
     input.setAttribute('value', item[0]);
     input.setAttribute('name', 'choice');
-    addClass(input, 'choiceBtn');
+
+    let label = document.createElement('label');
+    addClass(label, 'optionOver');
+    label.setAttribute('for', item[0]);
+    label.innerHTML = item[1];
+
+    let br = document.createElement('br');
+
     formArr.push(input, label, br);
   });
+
   formArr.forEach(function(item) {
     form.appendChild(item);
   });
+
   form.appendChild(formSubmit);
 
   return form;
 }
 
 function makeDropDown(dropContent) {
-  let form = document.createElement('form'),
-    formSubmit = document.createElement('input');
-  select = document.createElement('select');
+  let form = document.createElement('form');
   form.setAttribute('id', 'choiceForm');
   form.setAttribute('onsubmit', 'dropDownSubmit(event)');
+
+  let formSubmit = document.createElement('input');
   formSubmit.setAttribute('id', 'formSubmit');
+  addClass(formSubmit, 'btn');
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'Submit');
-  addClass(formSubmit, 'btn');
-  select.setAttribute('required', '');
+
+  let select = document.createElement('select');
   select.setAttribute('id', 'selectForm');
+  select.setAttribute('required', '');
 
   let optionDefault = document.createElement('option');
-  optionDefault.setAttribute('value', '');
   addClass(optionDefault, 'optionDefault');
+  optionDefault.setAttribute('value', '');
   optionDefault.innerHTML = '--Choose an option--';
 
-  let formArr = [];
-  let optionArr = Object.entries(dropContent.options);
-  let br = document.createElement('br');
+  let optionArr = Object.entries(dropContent.options),
+    formArr = [],
+    br = document.createElement('br');
 
   optionArr.forEach(function(item) {
     let option = document.createElement('option');
     option.setAttribute('value', item[0]);
     option.innerHTML = item[1];
+
     formArr.push(option);
   });
+
   select.appendChild(optionDefault);
   formArr.forEach(function(item) {
     select.appendChild(item, br);
   });
+
   form.appendChild(select);
   form.appendChild(br);
   form.appendChild(formSubmit);
+
   return form;
 }
 
 function makeDragAndDrop(dragContent) {
-  let dropBoxContainer = document.createElement('section'),
-    dragBox = document.createElement('section'),
-    dropBox = document.createElement('section'),
-    submitBtn = document.createElement('button');
+  let dropBoxContainer = document.createElement('section');
   addClass(dropBoxContainer, 'dropBoxContainer');
-  submitBtn.setAttribute('id', 'submitBtn');
-  submitBtn.innerHTML = 'SUBMIT';
-  addClass(submitBtn, 'disabledDragBtn');
-  submitBtn.setAttribute('disabled', '');
+
+  let dragSubBtn = document.createElement('button');
+  dragSubBtn.setAttribute('id', 'dragSubBtn');
+  addClass(dragSubBtn, 'dragSubBtn');
+  dragSubBtn.setAttribute('onclick', 'dragSubmit()');
+  dragSubBtn.innerHTML = 'SUBMIT';
+
+  let dragBox = document.createElement('section');
+  dragBox.setAttribute('id', 'dragBox');
   addClass(dragBox, 'dragBox');
+
+  let dropBox = document.createElement('section');
+  dropBox.setAttribute('id', 'dropBox');
   addClass(dropBox, 'dropBox');
 
   let itemsArr = Object.entries(dragContent.items),
     definitionsArr = Object.entries(dragContent.definitions);
 
   itemsArr.forEach(function(item) {
-    let dragSlot = document.createElement('section'),
-      dragItem = document.createElement('img');
+    let dragSlot = document.createElement('section');
     addClass(dragSlot, 'dragSlot');
     dragSlot.setAttribute('ondragover', 'onDragOver(event);');
     dragSlot.setAttribute('ondrop', 'onDrop(event)');
-    addClass(dragItem, 'dragItem');
+
+    let dragItem = document.createElement('img');
     dragItem.setAttribute('id', item[0]);
+    addClass(dragItem, 'dragItem');
     dragItem.setAttribute('draggable', item[1].draggable);
     dragItem.setAttribute('ondragstart', 'onDragStart(event)');
     dragItem.setAttribute('src', 'images/' + item[1].href);
     dragItem.setAttribute('alt', item[1].altText);
+
     dragSlot.appendChild(dragItem);
     dragBox.appendChild(dragSlot);
   });
 
   definitionsArr.forEach(function(item) {
-    let dropSlot = document.createElement('section'),
-      dropText = document.createElement('p');
-    addClass(dropText, 'dropText');
-    dropText.innerHTML = item[1];
-    addClass(dropSlot, 'dropSlot');
+    let dropSlot = document.createElement('section');
     dropSlot.setAttribute('id', item[0]);
+    addClass(dropSlot, 'dropSlot');
     dropSlot.setAttribute('ondragover', 'onDragOver(event)');
     dropSlot.setAttribute('ondrop', 'onDrop(event)');
+
+    let dropText = document.createElement('p');
+    addClass(dropText, 'dropText');
+    dropText.innerHTML = item[1];
+
     dropBox.appendChild(dropText);
     dropBox.appendChild(dropSlot);
   });
 
   dropBoxContainer.appendChild(dragBox);
   dropBoxContainer.appendChild(dropBox);
-  dropBoxContainer.appendChild(submitBtn);
-  return dropBoxContainer;
-}
+  dropBoxContainer.appendChild(dragSubBtn);
 
-// adds class to element
-function addClass(element, className) {
-  var currentClassName = element.getAttribute('class');
-  if (typeof currentClassName !== 'undefined' && currentClassName) {
-    element.setAttribute('class', currentClassName + ' ' + className);
-  } else {
-    element.setAttribute('class', className);
-  }
-}
-// checks if element has specific class
-function hasClass(element, className) {
-  if (element.classList) {
-    return element.classList.contains(className);
-  }
-  return !!element.className.match(
-    new RegExp('(\\s|^)' + className + '(\\s|$)')
-  );
-}
-// removes class from element
-function removeClass(element, className) {
-  if (element.classList) {
-    element.classList.remove(className);
-  } else if (hasClass(element, className)) {
-    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');
-    element.className = element.className.replace(reg, ' ');
-  }
+  return dropBoxContainer;
 }

@@ -153,7 +153,6 @@ const courseData = {
       pageType: 'challenge',
       elements: {
         heading: 'How is it that magic sail boats can fly?',
-        subHeading: 'It is through the use of:',
         dropdown1: {
           options: {
             option1: 'Burritos',
@@ -166,48 +165,42 @@ const courseData = {
           answers: {
             answer1: 'option2'
           }
-        },
-        subHeading: 'and with the help of:',
-        dropdown2: {
-          options: {
-            option1: "Some good ol' Tom-foolery",
-            option2: 'Two double cheeseburgers with extra pickles',
-            option3: 'A powerful computer',
-            option4: 'An anti-gravity engine',
-            option5: 'A magic wand',
-            option6: 'A washed up secret agent crying hysterically',
-            option7: 'Jeeves, the helpful butler'
-          },
-          answers: {
-            answer1: 'option5'
-          }
         }
       }
     },
     page6: {
-      pageType: 'dragAndDrop',
+      pageType: 'challenge',
       elements: {
-        heading: 'Match the terms with their definition:',
-        image1: {
-          draggable: 'true',
-          href: 'option1.png',
-          altText: 'The first selection option.'
-        },
-        image2: {
-          draggable: 'true',
-          href: 'option2.png',
-          altText: 'The second selection option.'
-        },
-        image3: {
-          draggable: 'true',
-          href: 'option3.png',
-          altText: 'The third selection option.'
-        },
-        definitions: {
-          definition1: 'A third selection option.',
-          definition2:
-            'Sometimes the most desired selection, but always the second option.',
-          definition3: 'An option that is the first choice.'
+        heading: 'Match each term with its definition:',
+        dragdrop1: {
+          items: {
+            image1: {
+              draggable: 'true',
+              href: 'option1.png',
+              altText: 'The first selection option.'
+            },
+            image2: {
+              draggable: 'true',
+              href: 'option2.png',
+              altText: 'The second selection option.'
+            },
+            image3: {
+              draggable: 'true',
+              href: 'option3.png',
+              altText: 'The third selection option.'
+            }
+          },
+          definitions: {
+            definition1: 'A third selection option.',
+            definition2:
+              'Sometimes the most desired selection, but always the second option.',
+            definition3: 'An option that is the first choice.'
+          },
+          answers: {
+            answer1: 'image1, definition3',
+            answer2: 'image2, definition2',
+            answer3: 'image3, definition1'
+          }
         }
       }
     }
@@ -219,9 +212,9 @@ const courseData = {
         heading: 'Course Conclusion',
         subHeading: 'You have completed the course!',
         paragraph1:
-          'In criminal law, in certain jurisdictions, criminal prosecutions are brought in the name of the People. Several U.S. states, including California, Illinois, and New York, use this style.',
+          'The spread of the large and increasing population of humans has profoundly affected much of the biosphere and millions of species worldwide. Advantages that explain this evolutionary success include a larger brain with a well-developed neocortex, prefrontal cortex and temporal lobes, which enable advanced abstract reasoning, language, problem solving, sociality, and culture through social learning.',
         paragraph2:
-          "A People's Republic is typically a Marxist or socialist one-party state that claims to govern on behalf of the people even if it in practice often turns out to be a dictatorship. Populism is another umbrella term for various political tendencies that claim to represent the people."
+          'Humans uniquely use such systems of symbolic communication as language and art to express themselves and exchange ideas, and also organize themselves into purposeful groups. Humans create complex social structures composed of many cooperating and competing groups, from families and kinship networks to political states. Social interactions between humans have established an extremely wide variety of values, social norms, and rituals, which together undergird human society.'
       }
     }
   }

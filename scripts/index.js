@@ -13,39 +13,38 @@ function loader() {
   initData();
   // read and distribute initial data
   function initData() {
-    const moduleArr = Object.values(courseData);
     // put module details in an array
-    for (i = 0; i < moduleArr.length; i++) {
-      pages.push(Object.values(moduleArr[i]));
-    }
+    const moduleArr = Object.entries(courseData);
+
     // get number of pages
-    for (let i = 0; i < pages.length; i++) {
-      pages[i].forEach(function(item) {
-        let pageIndex = {
-          pageElements: item
-        };
-        pageNum.push(pageIndex);
+    moduleArr.forEach(function(item) {
+      let workingItem = Object.entries(item[1]);
+      workingItem.forEach(function(item) {
+        pages.push(item);
       });
-      prevBtn.setAttribute('disabled', '');
-      removeClass(prevBtn, 'btn');
-      addClass(prevBtn, 'disabledBtn');
-    }
-    // assign page numbers to each page in the array
-    pageNum.forEach(function(item, index) {
-      Object.assign(item, { pageNumber: index });
     });
-    // create first page and append to view
-    currentPage = pageNum[0];
-    currentPageIndex = currentPage.pageNumber + 1;
-    createDisplay(currentPage.pageElements);
+
+    prevBtn.setAttribute('disabled', '');
+    removeClass(prevBtn, 'btn');
+    addClass(prevBtn, 'disabledBtn');
+
+    // assign page numbers to each page in the array
+    pages.forEach(function(item, index) {
+      Object.assign(item[1], { pageNumber: index + 1 });
+    });
+
     // display current page number in nav bar
-    pageReadout.innerHTML =
-      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
+    currentPage = pages[0];
+    currentPageIndex = 1;
+    pageReadout.innerHTML = 'PAGE ' + currentPageIndex + ' OF ' + pages.length;
+
+    // create first page and append to view
+    createDisplay(currentPage[1].elements);
   }
 
   // load previous page
-  prevBtn.addEventListener('click', function(e) {
-    e.preventDefault();
+  prevBtn.addEventListener('click', function(event) {
+    event.preventDefault();
 
     mainContainer.innerHTML = '';
     currentPageIndex--;
@@ -55,31 +54,30 @@ function loader() {
       removeClass(prevBtn, 'btn');
       addClass(prevBtn, 'disabledBtn');
     }
-    if (currentPageIndex < pageNum.length) {
+    if (currentPageIndex < pages.length) {
       nextBtn.removeAttribute('disabled');
       removeClass(nextBtn, 'disabledBtn');
       addClass(nextBtn, 'btn');
     }
 
-    for (let i = 0; i < pageNum.length; i++) {
-      if (pageNum[i].pageNumber == currentPageIndex - 1) {
-        currentPage = pageNum[i];
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i][1].pageNumber == currentPageIndex) {
+        currentPage = pages[i];
       }
     }
 
-    pageReadout.innerHTML =
-      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
+    pageReadout.innerHTML = 'PAGE ' + currentPageIndex + ' OF ' + pages.length;
     // create HTML page and append to mainContainer
-    createDisplay(currentPage.pageElements);
+    createDisplay(currentPage[1].elements);
   });
   // load next page
-  nextBtn.addEventListener('click', function(e) {
-    e.preventDefault();
+  nextBtn.addEventListener('click', function(event) {
+    // event.preventDefault();
 
     mainContainer.innerHTML = '';
     currentPageIndex++;
 
-    if (currentPageIndex == pageNum.length) {
+    if (currentPageIndex == pages.length) {
       nextBtn.setAttribute('disabled', '');
       removeClass(nextBtn, 'btn');
       addClass(nextBtn, 'disabledBtn');
@@ -90,15 +88,59 @@ function loader() {
       addClass(prevBtn, 'btn');
     }
 
-    for (let i = 0; i < pageNum.length; i++) {
-      if (pageNum[i].pageNumber == currentPageIndex - 1) {
-        currentPage = pageNum[i];
+    for (let i = 0; i < pages.length; i++) {
+      if (pages[i][1].pageNumber == currentPageIndex) {
+        currentPage = pages[i];
       }
     }
 
-    pageReadout.innerHTML =
-      'PAGE ' + currentPageIndex + ' OF ' + pageNum.length;
+    pageReadout.innerHTML = 'PAGE ' + currentPageIndex + ' OF ' + pages.length;
     // create HTML page and append to mainContainer
-    createDisplay(currentPage.pageElements);
+    createDisplay(currentPage[1].elements);
+  });
+}
+
+// shim
+if (!Object.entries) {
+  Object.entries = function(obj) {
+    var ownProps = Object.keys(obj),
+      i = ownProps.length,
+      resArray = new Array(i); // preallocate the Array
+    while (i--) resArray[i] = [ownProps[i], obj[ownProps[i]]];
+
+    return resArray;
+  };
+}
+
+if (typeof Object.assign != 'function') {
+  // Must be writable: true, enumerable: false, configurable: true
+  Object.defineProperty(Object, 'assign', {
+    value: function assign(target, varArgs) {
+      // .length of function is 2
+      'use strict';
+      if (target == null) {
+        // TypeError if undefined or null
+        throw new TypeError('Cannot convert undefined or null to object');
+      }
+
+      var to = Object(target);
+
+      for (var index = 1; index < arguments.length; index++) {
+        var nextSource = arguments[index];
+
+        if (nextSource != null) {
+          // Skip over if undefined or null
+          for (var nextKey in nextSource) {
+            // Avoid bugs when hasOwnProperty is shadowed
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
+    },
+    writable: true,
+    configurable: true
   });
 }

@@ -6,24 +6,56 @@
 }
 
 body {
-  background-color: #1f1f1f;
   color: #fffafa;
   font-size: 1em;
 }
 
-#header {
-  padding: 0.2em;
-  box-shadow: 0 0 1.5em rgba(209, 209, 209, 0.411);
+#header,
+#footer,
+#mainContainer {
+  -webkit-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  -moz-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
 }
 
 #header,
 #footer {
   max-width: 58.313em;
   width: 100%;
-  height: 5.5vh;
-  max-height: 2.5em;
-  background-color: #fffafa;
-  color: #1f1f1f;
+  height: 50%;
+  border-left: solid 0.1em #1f1f1f;
+  border-right: solid 0.1em #1f1f1f;
+  border-bottom: solid 0.1em #1f1f1f;
+  background-color: #696969;
+  color: #fffafa;
+  text-shadow: 0.15em 0.15em 0.1em rgba(0, 0, 0, 0.459);
+}
+
+#footer {
+  min-height: 2.5em;
+}
+
+#header {
+  min-height: 3em;
+  padding: 0.2em;
+}
+
+#header h1 {
+  float: left;
+  font-style: italic;
+}
+
+#header h2 {
+  float: right;
+  margin: 0.6%;
+}
+
+#waffleIcon {
+  float: right;
+  margin-top: 0.2%;
+  margin-right: 0.5%;
+  width: 3.8%;
+  filter: drop-shadow(0.1em 0.1em 0.1em #000000);
 }
 
 #mainContainer {
@@ -32,9 +64,9 @@ body {
   max-width: 58.313em;
   height: 31.063em;
   width: 58.313em;
-  border-left: solid 0.1em #fffafa;
-  border-right: solid 0.1em #fffafa;
-  text-shadow: 4px 4px 2px rgba(109, 109, 109, 0.082);
+  border: solid 0.1em #1f1f1f;
+  background-color: #1f1f1f;
+  text-shadow: 0.1em 0.1em 0.1em rgba(109, 109, 109, 0.082);
 }
 
 .floatLeft {
@@ -78,31 +110,31 @@ body {
 .btn {
   background-color: #1f1f1f;
   color: #fffafa;
-  border: solid 0.05em #fffafa;
+  border: solid 0.05em #696969;
 }
 
 .btn:hover {
   cursor: pointer;
   background-color: #fffafa;
   color: #1f1f1f;
-  border: solid 0.05em #1f1f1f;
-  text-shadow: 0 2px 1px rgba(73, 72, 72, 0.328);
+  border: solid 0.05em #fffafa;
+  text-shadow: 0 0.2em 0.1em rgba(73, 72, 72, 0.328);
   box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.328);
 }
 
 .btn:active {
   filter: brightness(80%);
   background-color: #1f1f1f;
-  color: #fffafa;
+  color: #696969;
   border: solid 0.05em #0000ff;
   -webkit-text-stroke: 0.02em #0000ff;
-  box-shadow: inset 0 0 0.5em rgba(255, 255, 255, 0.931);
+  box-shadow: inset 0 0 0.5em rgb(255, 255, 255);
 }
 
 .disabledBtn {
-  background-color: #fffafa;
-  color: #696969;
-  border: solid 0.05em #696969;
+  background-color: #696969;
+  border: solid 0.05em #1f1f1f;
+  color: #1f1f1f;
 }
 
 .ol,
@@ -122,4 +154,98 @@ body {
 .choiceBtn:hover {
   cursor: pointer;
   color: #0000ff;
+}
+
+.dropBoxContainer {
+  text-align: center;
+}
+
+.dragBox,
+.dropBox {
+  float: left;
+  margin-left: 3%;
+  padding: 0.5em;
+  width: 45%;
+  height: 26em;
+  border: solid 0.1em #fffafa;
+}
+
+.dropBox p {
+  align-self: initial;
+  font-size: 0.8em;
+}
+
+.dragItem {
+  margin-top: 5%;
+  width: 15em;
+}
+
+.dragItem:hover {
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+.dragItem:active,
+.draggedItem {
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+.dragSlot {
+  margin: 6% auto;
+  width: 90%;
+  height: 6.5em;
+  border: dashed 0.05em #fffafa;
+  /* text-align: center; */
+}
+
+.dropSlot {
+  margin: 1% auto;
+  width: 90%;
+  height: 6.5em;
+  border: inset 0.05em #fffafa;
+  background: content-box no-repeat url('images/stripes.png');
+  background-size: cover;
+  /* text-align: center; */
+}
+
+.dragSubBtn,
+.disabledDragBtn {
+  margin-top: 1%;
+  padding: 0.6em;
+  font-weight: bold;
+}
+
+.dragSubBtn {
+  background-color: #fffafa;
+  color: #1f1f1f;
+  border: solid 0.05em #696969;
+}
+
+.dragSubBtn:hover {
+  cursor: pointer;
+  background-color: #1f1f1f;
+  color: #fffafa;
+  border: solid 0.05em #fffafa;
+  text-shadow: 0 0.2em 0.1em rgba(255, 255, 255, 0.205);
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.445);
+}
+
+.dragSubBtn:active {
+  filter: brightness(80%);
+  background-color: #fffafa;
+  color: #696969;
+  border: solid 0.05em #0000ff;
+  -webkit-text-stroke: 0.02em #0000ff;
+  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.328);
+}
+
+.disabledDragBtn {
+  background-color: #1f1f1f;
+  border: solid 0.05em #696969;
+  color: #696969;
 }

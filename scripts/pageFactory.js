@@ -1,35 +1,28 @@
 function createDisplay(item) {
   let createdElements = [],
     section = document.createElement('section'),
-    workingItem = Object.values(item.elements),
-    workingName = Object.keys(item.elements);
+    workingItemArr = Object.entries(item);
+
   // determine which elements to create
-  workingName.forEach(function(item, index) {
-    let indexNum;
-    if (item.match(/heading/)) {
-      indexNum = index;
-      createdElements.push(makeH1(workingItem[indexNum]));
-    } else if (item.match(/subHeading/)) {
-      indexNum = index;
-      createdElements.push(makeH2(workingItem[indexNum]));
-    } else if (item.match(/paragraph/)) {
-      indexNum = index;
-      createdElements.push(makeP(workingItem[indexNum]));
-    } else if (item.match(/list/)) {
-      indexNum = index;
-      createdElements.push(makeList(workingItem[indexNum]));
-    } else if (item.match(/image/)) {
-      indexNum = index;
-      createdElements.push(makeImg(workingItem[indexNum]));
-    } else if (item.match(/video/)) {
-      indexNum = index;
-      createdElements.push(makeVideo(workingItem[indexNum]));
-    } else if (item.match(/form/)) {
-      indexNum = index;
-      createdElements.push(makeChallengeForm(workingItem[indexNum]));
-    } else if (item.match(/dropdown/)) {
-      indexNum = index;
-      createdElements.push(makeDropDown(workingItem[index]));
+  workingItemArr.forEach(function(item) {
+    if (item[0].match(/heading/)) {
+      createdElements.push(makeH1(item[1]));
+    } else if (item[0].match(/subHeading/)) {
+      createdElements.push(makeH2(item[1]));
+    } else if (item[0].match(/paragraph/)) {
+      createdElements.push(makeP(item[1]));
+    } else if (item[0].match(/list/)) {
+      createdElements.push(makeList(item[1]));
+    } else if (item[0].match(/image/)) {
+      createdElements.push(makeImg(item[1]));
+    } else if (item[0].match(/video/)) {
+      createdElements.push(makeVideo(item[1]));
+    } else if (item[0].match(/form/)) {
+      createdElements.push(makeChallengeForm(item[1]));
+    } else if (item[0].match(/dropdown/)) {
+      createdElements.push(makeDropDown(item[1]));
+    } else if (item[0].match(/dragdrop/)) {
+      createdElements.push(makeDragAndDrop(item[1]));
     }
   });
   // add elements to section and append to mainContainer
@@ -111,7 +104,7 @@ function makeVideo(videoContent) {
   video.setAttribute('src', 'video/' + videoContent.href);
   video.setAttribute('alt', videoContent.altText);
   video.setAttribute('controls', '');
-  video.setAttribute('autoplay', '');
+  // video.setAttribute('autoplay', '');
   addClass(video, 'video');
   // determine video float orientation
   if (videoContent.floatSide == 'left') {
@@ -126,9 +119,10 @@ function makeChallengeForm(formContent) {
   let form = document.createElement('form'),
     formSubmit = document.createElement('input');
   form.setAttribute('id', 'choiceForm');
+  form.setAttribute('onsubmit', 'choiceSubmit(event)');
   formSubmit.setAttribute('id', 'formSubmit');
   formSubmit.setAttribute('type', 'submit');
-  formSubmit.setAttribute('value', 'Submit');
+  formSubmit.setAttribute('value', 'SUBMIT');
   addClass(formSubmit, 'btn');
 
   let formArr = [];
@@ -161,6 +155,7 @@ function makeDropDown(dropContent) {
     formSubmit = document.createElement('input');
   select = document.createElement('select');
   form.setAttribute('id', 'choiceForm');
+  form.setAttribute('onsubmit', 'dropDownSubmit(event)');
   formSubmit.setAttribute('id', 'formSubmit');
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'Submit');
@@ -193,8 +188,55 @@ function makeDropDown(dropContent) {
   return form;
 }
 
-function makeDragAndDrop() {
-  //
+function makeDragAndDrop(dragContent) {
+  let dropBoxContainer = document.createElement('section'),
+    dragBox = document.createElement('section'),
+    dropBox = document.createElement('section'),
+    submitBtn = document.createElement('button');
+  addClass(dropBoxContainer, 'dropBoxContainer');
+  submitBtn.setAttribute('id', 'submitBtn');
+  submitBtn.innerHTML = 'SUBMIT';
+  addClass(submitBtn, 'disabledDragBtn');
+  submitBtn.setAttribute('disabled', '');
+  addClass(dragBox, 'dragBox');
+  addClass(dropBox, 'dropBox');
+
+  let itemsArr = Object.entries(dragContent.items),
+    definitionsArr = Object.entries(dragContent.definitions);
+
+  itemsArr.forEach(function(item) {
+    let dragSlot = document.createElement('section'),
+      dragItem = document.createElement('img');
+    addClass(dragSlot, 'dragSlot');
+    dragSlot.setAttribute('ondragover', 'onDragOver(event);');
+    dragSlot.setAttribute('ondrop', 'onDrop(event)');
+    addClass(dragItem, 'dragItem');
+    dragItem.setAttribute('id', item[0]);
+    dragItem.setAttribute('draggable', item[1].draggable);
+    dragItem.setAttribute('ondragstart', 'onDragStart(event)');
+    dragItem.setAttribute('src', 'images/' + item[1].href);
+    dragItem.setAttribute('alt', item[1].altText);
+    dragSlot.appendChild(dragItem);
+    dragBox.appendChild(dragSlot);
+  });
+
+  definitionsArr.forEach(function(item) {
+    let dropSlot = document.createElement('section'),
+      dropText = document.createElement('p');
+    addClass(dropText, 'dropText');
+    dropText.innerHTML = item[1];
+    addClass(dropSlot, 'dropSlot');
+    dropSlot.setAttribute('id', item[0]);
+    dropSlot.setAttribute('ondragover', 'onDragOver(event)');
+    dropSlot.setAttribute('ondrop', 'onDrop(event)');
+    dropBox.appendChild(dropText);
+    dropBox.appendChild(dropSlot);
+  });
+
+  dropBoxContainer.appendChild(dragBox);
+  dropBoxContainer.appendChild(dropBox);
+  dropBoxContainer.appendChild(submitBtn);
+  return dropBoxContainer;
 }
 
 // adds class to element

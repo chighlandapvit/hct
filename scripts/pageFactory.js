@@ -139,7 +139,7 @@ function makeChallengeForm(formContent) {
 
   let formSubmit = document.createElement('input');
   formSubmit.setAttribute('id', 'formSubmit');
-  addClass(formSubmit, 'btn');
+  addClass(formSubmit, 'chalSubBtn');
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'SUBMIT');
 
@@ -180,7 +180,7 @@ function makeDropDown(dropContent) {
 
   let formSubmit = document.createElement('input');
   formSubmit.setAttribute('id', 'formSubmit');
-  addClass(formSubmit, 'btn');
+  addClass(formSubmit, 'chalSubBtn');
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'Submit');
 
@@ -221,11 +221,11 @@ function makeDragAndDrop(dragContent) {
   let dropBoxContainer = document.createElement('section');
   addClass(dropBoxContainer, 'dropBoxContainer');
 
-  let dragSubBtn = document.createElement('button');
-  dragSubBtn.setAttribute('id', 'dragSubBtn');
-  addClass(dragSubBtn, 'dragSubBtn');
-  dragSubBtn.setAttribute('onclick', 'dragSubmit()');
-  dragSubBtn.innerHTML = 'SUBMIT';
+  let chalSubBtn = document.createElement('button');
+  chalSubBtn.setAttribute('id', 'chalSubBtn');
+  addClass(chalSubBtn, 'chalSubBtn');
+  chalSubBtn.setAttribute('onclick', 'dragSubmit()');
+  chalSubBtn.innerHTML = 'SUBMIT';
 
   let dragBox = document.createElement('section');
   dragBox.setAttribute('id', 'dragBox');
@@ -274,7 +274,7 @@ function makeDragAndDrop(dragContent) {
 
   dropBoxContainer.appendChild(dragBox);
   dropBoxContainer.appendChild(dropBox);
-  dropBoxContainer.appendChild(dragSubBtn);
+  dropBoxContainer.appendChild(chalSubBtn);
 
   return dropBoxContainer;
 }

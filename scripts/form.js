@@ -11,6 +11,7 @@ function choiceSubmit(event) {
     }
   }
   console.log(userSelection);
+  
 }
 
 function dropDownSubmit(event) {
@@ -39,7 +40,6 @@ function dragSubmit() {
       let userMatch = [];
       userMatch.push(dropSlot[i].id, dropSlot[i].children[0].id);
       dropItemArr.push(userMatch);
-      // dropItemArr.push(dropSlot[i]);
     }
   }
 

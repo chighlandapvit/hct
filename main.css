@@ -6,8 +6,28 @@
 }
 
 body {
+  height: 36.563em;
+  max-width: 58.313em;
+  width: 100%;
   color: #fffafa;
   font-size: 1em;
+  -webkit-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  -moz-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+}
+
+img,
+button,
+input,
+select,
+section,
+body {
+  border-radius: 0.2em;
+}
+
+#menu::-webkit-scrollbar,
+#mainContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .invisible {
@@ -15,29 +35,20 @@ body {
 }
 
 #header,
-#footer,
-#mainContainer {
-  -webkit-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
-  -moz-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
-  box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
-}
-
-#header,
 #footer {
-  max-width: 58.313em;
   width: 100%;
-  height: 50%;
-  border-left: solid 0.1em #1f1f1f;
-  border-right: solid 0.1em #1f1f1f;
-  border-bottom: solid 0.1em #1f1f1f;
+  border-left: solid 0.05em #1f1f1f;
+  border-right: solid 0.05em #1f1f1f;
+  border-bottom: solid 0.05em #1f1f1f;
   background-color: #696969;
   color: #fffafa;
   text-shadow: 0.15em 0.15em 0.1em rgba(0, 0, 0, 0.459);
 }
 
 #header {
-  min-height: 3em;
   padding: 0.2em;
+  height: 3em;
+  border-radius: 0.2em 0.2em 0 0;
 }
 
 #header h1 {
@@ -60,17 +71,19 @@ body {
 
 #mainContainer {
   padding: 0.2em;
-  max-height: 31.063em;
   max-width: 58.313em;
-  height: 31.063em;
-  width: 58.313em;
+  max-height: 31.063em;
+  width: 100%;
+  height: 100%;
   border: solid 0.1em #1f1f1f;
   background-color: #1f1f1f;
   text-shadow: 0.1em 0.1em 0.1em rgba(109, 109, 109, 0.082);
+  overflow-y: scroll;
 }
 
 #footer {
-  min-height: 2.5em;
+  height: 2.5em;
+  border-radius: 0 0 0.2em 0.2em;
 }
 
 #menu {
@@ -86,10 +99,6 @@ body {
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
-
-#menu::-webkit-scrollbar {
-  display: none;
 }
 
 #toc {
@@ -194,6 +203,7 @@ body {
   float: left;
   margin-left: 3.3%;
   padding: 0.5em;
+  min-width: 18.75em;
   width: 45%;
   height: 26em;
   border: solid 0.1em #fffafa;
@@ -205,8 +215,8 @@ body {
 }
 
 .dragItem {
-  margin-top: 5%;
-  width: 15em;
+  margin-top: 2.8%;
+  width: 90%;
 }
 
 .dragItem:hover {
@@ -226,6 +236,7 @@ body {
 
 .dragSlot {
   margin: 6% auto;
+  /* max-height: 6.5em; */
   width: 90%;
   height: 6.5em;
   border-bottom: dashed 0.05em #fffafa;
@@ -233,8 +244,9 @@ body {
 
 .dropSlot {
   margin: 1% auto;
+  min-height: 5.5em;
   width: 90%;
-  height: 6.5em;
+  height: 26.4%;
   border: solid 0.05em #fffafa;
   background: content-box no-repeat url('https://i.imgur.com/Q0Lm97c.png');
   background-size: cover;

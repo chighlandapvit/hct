@@ -53,10 +53,17 @@ function loader() {
     menuList.setAttribute('id', 'menuList');
 
     modArr.forEach(function(mod) {
+      let modBox = document.createElement('section');
+      addClass(modBox, 'modBox');
+
+      let modTitle = document.createElement('a');
+      addClass(modTitle, 'modTitle');
+      modTitle.innerHTML = mod[0];
+
       let modList = document.createElement('ul');
       modList.setAttribute('id', mod[0]);
       addClass(modList, 'modList');
-      modList.innerHTML = mod[0];
+      addClass(modList, 'invisible');
 
       let modPages = Object.entries(mod[1]);
 
@@ -64,21 +71,35 @@ function loader() {
         let pageItem = document.createElement('li');
         addClass(pageItem, 'pageItem');
 
-        // pageItem.innerHTML = `<a id="item${page[1].pageNumber}" class="pageItem" href="${page[1].title}">${page[1].pageName}</a>`;
-
         pageItem.innerHTML =
           '<a id="item' +
           page[1].pageNumber +
-          '" class="pageItem" href="' +
-          page[1].title +
-          '">' +
+          '" class="pageLink" href="#">' +
           page[1].pageName +
           '</a>';
 
         modList.appendChild(pageItem);
       });
 
-      menuList.appendChild(modList);
+      modTitle.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        let targetParent = event.target.parentElement,
+          sibling = event.target.nextSibling;
+
+        if (targetParent.children.length > 0) {
+          if (hasClass(sibling, 'invisible')) {
+            removeClass(sibling, 'invisible');
+          } else {
+            addClass(sibling, 'invisible');
+          }
+        }
+      });
+
+      modBox.appendChild(modTitle);
+      modBox.appendChild(modList);
+
+      menuList.appendChild(modBox);
     });
 
     menu.appendChild(menuList);
@@ -91,8 +112,14 @@ function loader() {
   menuBtn.addEventListener('click', function() {
     if (hasClass(menu, 'invisible')) {
       removeClass(menu, 'invisible');
+
+      removeClass(menuBtn, 'btn');
+      addClass(menuBtn, 'altBtn');
     } else {
       addClass(menu, 'invisible');
+
+      removeClass(menuBtn, 'altBtn');
+      addClass(menuBtn, 'btn');
     }
   });
 

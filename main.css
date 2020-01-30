@@ -75,14 +75,21 @@ body {
 
 #menu {
   position: fixed;
+  padding: 1%;
   left: 0;
   top: 14em;
-  padding: 1%;
   height: 20.043em;
   width: 15.625em;
   background-color: #000000;
   opacity: 0.96;
-  /* overflow: scroll; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#menu::-webkit-scrollbar {
+  display: none;
 }
 
 #toc {

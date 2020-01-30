@@ -1,7 +1,9 @@
 const courseData = {
-  intro: {
+  Introduction: {
     page1: {
       pageType: 'display',
+      pageName: 'The Rules of Flight',
+      title: 'rulesofflight',
       elements: {
         heading: 'Introduction',
         image1: {
@@ -22,6 +24,8 @@ const courseData = {
     },
     page2: {
       pageType: 'display',
+      pageName: 'Physics in Space',
+      title: 'physicsinspace',
       elements: {
         heading: 'Introduction Continued...',
         image1: {
@@ -50,9 +54,11 @@ const courseData = {
       }
     }
   },
-  lesson1: {
+  'Lesson 1': {
     page1: {
       pageType: 'display',
+      pageName: 'Science Guides the Way',
+      title: 'scienceguides',
       elements: {
         heading: 'Lesson 1 Page 1',
         paragraph1:
@@ -89,6 +95,8 @@ const courseData = {
     },
     page2: {
       pageType: 'display',
+      pageName: 'A Word On Rabbits',
+      title: 'wordonrabbits',
       elements: {
         heading: 'Lesson 1 Page 2',
         video: {
@@ -114,6 +122,8 @@ const courseData = {
     },
     page3: {
       pageType: 'challenge',
+      pageName: 'Household Buddies',
+      title: 'householdbuddies',
       elements: {
         heading: 'The best type of household buddy is:',
         form1: {
@@ -132,6 +142,8 @@ const courseData = {
     },
     page4: {
       pageType: 'challenge',
+      pageName: 'The Monday Conundrum',
+      title: 'mondayconundrum',
       elements: {
         heading: 'Which character(s) could defeat Monday?',
         form1: {
@@ -152,6 +164,8 @@ const courseData = {
     },
     page5: {
       pageType: 'challenge',
+      pageName: 'Magic Sail Boats',
+      title: 'magicsailboats',
       elements: {
         heading: 'How is it that magic sail boats can fly?',
         dropdown1: {
@@ -171,6 +185,8 @@ const courseData = {
     },
     page6: {
       pageType: 'challenge',
+      pageName: 'So Many Options',
+      title: 'somanyoptions',
       elements: {
         heading: 'Match each term with its definition:',
         dragdrop1: {
@@ -206,9 +222,11 @@ const courseData = {
       }
     }
   },
-  conclusion: {
+  Conclusion: {
     page1: {
       pageType: 'display',
+      pageName: 'Course Conclusion',
+      title: 'conclusion',
       elements: {
         heading: 'Course Conclusion',
         subHeading: 'You have completed the course!',

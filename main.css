@@ -83,6 +83,18 @@ body {
   opacity: 0.9;
 }
 
+#menuList {
+  list-style: none;
+}
+
+.modList {
+  list-style: square;
+}
+
+.pageItem {
+  margin-left: 10%;
+}
+
 .floatLeft {
   float: left;
 }

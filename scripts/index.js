@@ -39,9 +39,62 @@ function loader() {
     currentPageIndex = 1;
     pageReadout.innerHTML = 'PAGE ' + currentPageIndex + ' OF ' + pages.length;
 
+    // create table-of-contents menu
+    makeMenu(moduleArr, pages);
+
     // create first page and append to view
     createDisplay(currentPage[1].elements);
   }
+
+  function makeMenu(modArr) {
+    let menu = document.getElementById('menu');
+
+    let menuList = document.createElement('ul');
+    menuList.setAttribute('id', 'menuList');
+
+    modArr.forEach(function(mod) {
+      let modList = document.createElement('ul');
+      modList.setAttribute('id', mod[0]);
+      addClass(modList, 'modList');
+      modList.innerHTML = mod[0];
+
+      let modPages = Object.entries(mod[1]);
+
+      modPages.forEach(function(page) {
+        let pageItem = document.createElement('li');
+        addClass(pageItem, 'pageItem');
+
+        // pageItem.innerHTML = `<a id="item${page[1].pageNumber}" class="pageItem" href="${page[1].title}">${page[1].pageName}</a>`;
+
+        pageItem.innerHTML =
+          '<a id="item' +
+          page[1].pageNumber +
+          '" class="pageItem" href="' +
+          page[1].title +
+          '">' +
+          page[1].pageName +
+          '</a>';
+
+        modList.appendChild(pageItem);
+      });
+
+      menuList.appendChild(modList);
+    });
+
+    menu.appendChild(menuList);
+  }
+
+  // expands and collapses table-of-contents menu
+  let menuBtn = document.getElementById('menuBtn'),
+    menu = document.getElementById('menu');
+
+  menuBtn.addEventListener('click', function() {
+    if (hasClass(menu, 'invisible')) {
+      removeClass(menu, 'invisible');
+    } else {
+      addClass(menu, 'invisible');
+    }
+  });
 
   // load previous page when corresponding button is clicked
   prevBtn.addEventListener('click', function() {
@@ -106,17 +159,6 @@ function loader() {
     createDisplay(currentPage[1].elements);
   });
 }
-
-let menuBtn = document.getElementById('menuBtn'),
-  menu = document.getElementById('menu');
-
-menuBtn.addEventListener('click', function() {
-  if (hasClass(menu, 'invisible')) {
-    removeClass(menu, 'invisible');
-  } else {
-    addClass(menu, 'invisible');
-  }
-});
 
 // tocBtn.addEventListener("click", function() {
 //   tocMenu.classList.toggle("invisible");

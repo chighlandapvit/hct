@@ -1,17 +1,36 @@
+let userSelection = [],
+  chalAnswers = [];
+
 // form submit button event handling
 function choiceSubmit(event) {
   event.preventDefault();
-  let choiceForm = document.getElementById('choiceForm'),
-    choiceBtns = document.getElementsByClassName('choiceBtn'),
-    userSelection = [];
+  let choiceBtns = document.getElementsByClassName('choiceBtn');
+  userSelection = [];
 
   for (let i = 0; i < choiceBtns.length; i++) {
-    if (choiceBtns[i].checked == true) {
+    if (choiceBtns[i].checked === true) {
       userSelection.push(choiceBtns[i].value);
     }
   }
-  console.log(userSelection);
-  
+  validateChecked(userSelection, chalAnswers);
+
+  // console.log(userSelection);
+  // console.log(chalAnswers);
+}
+
+function validateChecked(guesses, answers) {
+  if (guesses.length == 0) {
+    // alert('you must make a selection!');
+    let message = 'You must make a selection!';
+    makeErrorWindow(message);
+  } else {
+    for (let i = 0; answers.length < i; i++) {
+      if (guesses[i] !== answers[i]) {
+        console.log('nah, man');
+      }
+    }
+    console.log(guesses, answers);
+  }
 }
 
 function dropDownSubmit(event) {
@@ -44,7 +63,7 @@ function dragSubmit() {
   }
 
   if (dropItemArr.length < dropBoxArr.length) {
-    alert('You must match all of the items with their definitions!');
+    alert('You must match all of the items with their definitions.');
   } else {
     console.log(dropItemArr);
   }
@@ -61,7 +80,6 @@ function onDragOver(event) {
 
 function onDrop(event) {
   let id = event.dataTransfer.getData('text');
-
   let draggableItem = document.getElementById(id);
   let dropzone = event.target;
 
@@ -69,4 +87,13 @@ function onDrop(event) {
   // removeClass(event.currentTarget, 'draggedItem');
 
   event.dataTransfer.clearData();
+}
+
+function closeErrorWindow() {
+  // console.log(mainContainer.children);
+  for (i = 0; i < mainContainer.children.length; i++) {
+    if (hasClass(mainContainer.children[i], 'errorWindow')) {
+      mainContainer.removeChild(mainContainer.children[i]);
+    }
+  }
 }

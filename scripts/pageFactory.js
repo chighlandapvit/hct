@@ -34,6 +34,32 @@ function createDisplay(item) {
   mainContainer.appendChild(section);
 }
 
+// create error window
+function makeErrorWindow(message) {
+  let errorWindow = document.createElement('section');
+  addClass(errorWindow, 'errorWindow');
+
+  let errorHeading = document.createElement('h1');
+  addClass(errorHeading, 'errorHeading');
+  errorHeading.innerHTML = 'Stop right there!';
+
+  let errorMessage = document.createElement('p');
+  addClass(errorMessage, 'errorMessage');
+  errorMessage.innerHTML = message;
+
+  let errorBtn = document.createElement('button');
+  addClass(errorBtn, 'btn');
+  addClass(errorBtn, 'errorBtn');
+  errorBtn.setAttribute('onclick', 'closeErrorWindow()');
+  errorBtn.innerHTML = 'Okay';
+
+  errorWindow.appendChild(errorHeading);
+  errorWindow.appendChild(errorMessage);
+  errorWindow.appendChild(errorBtn);
+
+  mainContainer.appendChild(errorWindow);
+}
+
 // create distinct HTML elements
 function makeH1(h1Content) {
   let h1 = document.createElement('h1');
@@ -133,6 +159,11 @@ function makeVideo(videoContent) {
 }
 
 function makeChallengeForm(formContent) {
+  chalAnswers = [];
+  Object.entries(formContent.answers).forEach(function(answer) {
+    chalAnswers.push(answer[1]);
+  });
+
   let form = document.createElement('form');
   form.setAttribute('id', 'choiceForm');
   form.setAttribute('onsubmit', 'choiceSubmit(event)');

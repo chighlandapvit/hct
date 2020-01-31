@@ -10,7 +10,10 @@ let pages = [],
 
 // on window load
 function loader() {
-  makeErrorWindow('Hey now! we gotta make this thing look right.');
+  // makeModalWindow(
+  //   'Wait a second...',
+  //   'Hey, we gotta make this thing look right.'
+  // );
   initData();
   // read and distribute the dataSet
   function initData() {

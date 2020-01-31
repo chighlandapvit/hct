@@ -20,9 +20,9 @@ function choiceSubmit(event) {
 
 function validateChecked(guesses, answers) {
   if (guesses.length == 0) {
-    // alert('you must make a selection!');
-    let message = 'You must make a selection!';
-    makeErrorWindow(message);
+    let mHeading = 'Stop right there!',
+      mMessage = 'You must make a selection.';
+    makeModalWindow(mHeading, mMessage);
   } else {
     for (let i = 0; answers.length < i; i++) {
       if (guesses[i] !== answers[i]) {
@@ -36,7 +36,16 @@ function validateChecked(guesses, answers) {
 function dropDownSubmit(event) {
   event.preventDefault();
   let selectForm = document.getElementById('selectForm');
-  console.log(selectForm.value);
+  // selectForm.preventDefault();
+
+  let mHeading = 'Go no further!',
+    mMessage = 'You must choose an option.';
+
+  if (selectForm.value == 'default') {
+    makeModalWindow(mHeading, mMessage);
+  } else {
+    console.log(selectForm.value);
+  }
 }
 
 // drag and drop functionality
@@ -63,7 +72,10 @@ function dragSubmit() {
   }
 
   if (dropItemArr.length < dropBoxArr.length) {
-    alert('You must match all of the items with their definitions.');
+    // alert('You must match all of the items with their definitions.');
+    let mHeading = 'Hold on a minute!',
+      mMessage = 'You must match all of the items with their definitions.';
+    makeModalWindow(mHeading, mMessage);
   } else {
     console.log(dropItemArr);
   }
@@ -89,10 +101,9 @@ function onDrop(event) {
   event.dataTransfer.clearData();
 }
 
-function closeErrorWindow() {
-  // console.log(mainContainer.children);
+function closeModalWindow() {
   for (i = 0; i < mainContainer.children.length; i++) {
-    if (hasClass(mainContainer.children[i], 'errorWindow')) {
+    if (hasClass(mainContainer.children[i], 'modalContainer')) {
       mainContainer.removeChild(mainContainer.children[i]);
     }
   }

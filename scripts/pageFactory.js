@@ -1,28 +1,28 @@
-function createDisplay(item) {
-  let workingItemArr = Object.entries(item),
+function createDisplay(page) {
+  let workingItemArr = Object.entries(page),
     section = document.createElement('section'),
     createdElements = [];
 
   // determine which elements to create
-  workingItemArr.forEach(function(item) {
-    if (item[0].match(/heading/)) {
-      createdElements.push(makeH1(item[1]));
-    } else if (item[0].match(/subHeading/)) {
-      createdElements.push(makeH2(item[1]));
-    } else if (item[0].match(/paragraph/)) {
-      createdElements.push(makeP(item[1]));
-    } else if (item[0].match(/list/)) {
-      createdElements.push(makeList(item[1]));
-    } else if (item[0].match(/image/)) {
-      createdElements.push(makeImg(item[1]));
-    } else if (item[0].match(/video/)) {
-      createdElements.push(makeVideo(item[1]));
-    } else if (item[0].match(/form/)) {
-      createdElements.push(makeChallengeForm(item[1]));
-    } else if (item[0].match(/dropdown/)) {
-      createdElements.push(makeDropDown(item[1]));
-    } else if (item[0].match(/dragdrop/)) {
-      createdElements.push(makeDragAndDrop(item[1]));
+  workingItemArr.forEach(function(workingItem) {
+    if (workingItem[0].match(/heading/)) {
+      createdElements.push(makeH1(workingItem[1]));
+    } else if (workingItem[0].match(/subHeading/)) {
+      createdElements.push(makeH2(workingItem[1]));
+    } else if (workingItem[0].match(/paragraph/)) {
+      createdElements.push(makeP(workingItem[1]));
+    } else if (workingItem[0].match(/list/)) {
+      createdElements.push(makeList(workingItem[1]));
+    } else if (workingItem[0].match(/image/)) {
+      createdElements.push(makeImg(workingItem[1]));
+    } else if (workingItem[0].match(/video/)) {
+      createdElements.push(makeVideo(workingItem[1]));
+    } else if (workingItem[0].match(/form/)) {
+      createdElements.push(makeChallengeForm(workingItem[1]));
+    } else if (workingItem[0].match(/dropdown/)) {
+      createdElements.push(makeDropDown(workingItem[1]));
+    } else if (workingItem[0].match(/dragdrop/)) {
+      createdElements.push(makeDragAndDrop(workingItem[1]));
     }
   });
 
@@ -35,29 +35,37 @@ function createDisplay(item) {
 }
 
 // create error window
-function makeErrorWindow(message) {
-  let errorWindow = document.createElement('section');
-  addClass(errorWindow, 'errorWindow');
+function makeModalWindow(mHeading, mMessage) {
+  let modalContainer = document.createElement('section');
+  addClass(modalContainer, 'modalContainer');
 
-  let errorHeading = document.createElement('h1');
-  addClass(errorHeading, 'errorHeading');
-  errorHeading.innerHTML = 'Stop right there!';
+  let modalInside = document.createElement('section');
+  addClass(modalInside, 'modalInside');
 
-  let errorMessage = document.createElement('p');
-  addClass(errorMessage, 'errorMessage');
-  errorMessage.innerHTML = message;
+  let modalWindow = document.createElement('section');
+  addClass(modalWindow, 'modalWindow');
 
-  let errorBtn = document.createElement('button');
-  addClass(errorBtn, 'btn');
-  addClass(errorBtn, 'errorBtn');
-  errorBtn.setAttribute('onclick', 'closeErrorWindow()');
-  errorBtn.innerHTML = 'Okay';
+  let modalHeading = document.createElement('h1');
+  addClass(modalHeading, 'modalHeading');
+  modalHeading.innerHTML = mHeading;
 
-  errorWindow.appendChild(errorHeading);
-  errorWindow.appendChild(errorMessage);
-  errorWindow.appendChild(errorBtn);
+  let modalMessage = document.createElement('p');
+  addClass(modalMessage, 'modalMessage');
+  modalMessage.innerHTML = mMessage;
 
-  mainContainer.appendChild(errorWindow);
+  let modalBtn = document.createElement('button');
+  addClass(modalBtn, 'btn');
+  addClass(modalBtn, 'modalBtn');
+  modalBtn.setAttribute('onclick', 'closeModalWindow()');
+  modalBtn.innerHTML = 'Okay';
+
+  modalWindow.appendChild(modalHeading);
+  modalWindow.appendChild(modalMessage);
+  modalWindow.appendChild(modalBtn);
+  modalInside.appendChild(modalWindow);
+  modalContainer.appendChild(modalInside);
+
+  mainContainer.appendChild(modalContainer);
 }
 
 // create distinct HTML elements
@@ -83,16 +91,16 @@ function makeP(pContent) {
 }
 
 function makeList(listContent) {
-  let listContentArr = Object.entries(listContent.listItems);
+  let listItemArr = Object.entries(listContent.listItems);
   // determine list type
   if (listContent.listType == 'ul') {
     let ul = document.createElement('ul');
     addClass(ul, 'ul');
 
-    listContentArr.forEach(function(item) {
+    listItemArr.forEach(function(listItem) {
       let li = document.createElement('li');
       addClass(li, 'li');
-      li.innerHTML = item[1];
+      li.innerHTML = listItem[1];
 
       ul.appendChild(li);
     });
@@ -102,10 +110,10 @@ function makeList(listContent) {
     let ol = document.createElement('ol');
     addClass(ol, 'ol');
 
-    listContentArr.forEach(function(item) {
+    listItemArr.forEach(function(listItem) {
       let li = document.createElement('li');
       addClass(li, 'li');
-      li.innerHTML = item[1];
+      li.innerHTML = listItem[1];
 
       ol.appendChild(li);
     });
@@ -174,29 +182,29 @@ function makeChallengeForm(formContent) {
   formSubmit.setAttribute('type', 'submit');
   formSubmit.setAttribute('value', 'SUBMIT');
 
-  let inputArr = Object.entries(formContent.options),
-    formArr = [];
+  let inputOptionArr = Object.entries(formContent.options),
+    formItemArr = [];
 
-  inputArr.forEach(function(item) {
+  inputOptionArr.forEach(function(inputOption) {
     let input = document.createElement('input');
-    input.setAttribute('id', item[0]);
+    input.setAttribute('id', inputOption[0]);
     addClass(input, 'choiceBtn');
     input.setAttribute('type', formContent.type);
-    input.setAttribute('value', item[0]);
+    input.setAttribute('value', inputOption[0]);
     input.setAttribute('name', 'choice');
 
     let label = document.createElement('label');
     addClass(label, 'optionOver');
-    label.setAttribute('for', item[0]);
-    label.innerHTML = item[1];
+    label.setAttribute('for', inputOption[0]);
+    label.innerHTML = inputOption[1];
 
     let br = document.createElement('br');
 
-    formArr.push(input, label, br);
+    formItemArr.push(input, label, br);
   });
 
-  formArr.forEach(function(item) {
-    form.appendChild(item);
+  formItemArr.forEach(function(formItem) {
+    form.appendChild(formItem);
   });
 
   form.appendChild(formSubmit);
@@ -204,7 +212,7 @@ function makeChallengeForm(formContent) {
   return form;
 }
 
-function makeDropDown(dropContent) {
+function makeDropDown(dropDownContent) {
   let form = document.createElement('form');
   form.setAttribute('id', 'choiceForm');
   form.setAttribute('onsubmit', 'dropDownSubmit(event)');
@@ -221,24 +229,24 @@ function makeDropDown(dropContent) {
 
   let optionDefault = document.createElement('option');
   addClass(optionDefault, 'optionDefault');
-  optionDefault.setAttribute('value', '');
+  optionDefault.setAttribute('value', 'default');
   optionDefault.innerHTML = '--Choose an option--';
 
-  let optionArr = Object.entries(dropContent.options),
-    formArr = [],
+  let optionArr = Object.entries(dropDownContent.options),
+    formOptionArr = [],
     br = document.createElement('br');
 
-  optionArr.forEach(function(item) {
+  optionArr.forEach(function(optionItem) {
     let option = document.createElement('option');
-    option.setAttribute('value', item[0]);
-    option.innerHTML = item[1];
+    option.setAttribute('value', optionItem[0]);
+    option.innerHTML = optionItem[1];
 
-    formArr.push(option);
+    formOptionArr.push(option);
   });
 
   select.appendChild(optionDefault);
-  formArr.forEach(function(item) {
-    select.appendChild(item, br);
+  formOptionArr.forEach(function(formOption) {
+    select.appendChild(formOption, br);
   });
 
   form.appendChild(select);
@@ -248,7 +256,7 @@ function makeDropDown(dropContent) {
   return form;
 }
 
-function makeDragAndDrop(dragContent) {
+function makeDragAndDrop(dropContent) {
   let dropBoxContainer = document.createElement('section');
   addClass(dropBoxContainer, 'dropBoxContainer');
 
@@ -266,38 +274,38 @@ function makeDragAndDrop(dragContent) {
   dropBox.setAttribute('id', 'dropBox');
   addClass(dropBox, 'dropBox');
 
-  let itemsArr = Object.entries(dragContent.items),
-    definitionsArr = Object.entries(dragContent.definitions);
+  let dropIconsArr = Object.entries(dropContent.items),
+    definitionsArr = Object.entries(dropContent.definitions);
 
-  itemsArr.forEach(function(item) {
+  dropIconsArr.forEach(function(dropIcon) {
     let dragSlot = document.createElement('section');
     addClass(dragSlot, 'dragSlot');
     dragSlot.setAttribute('ondragover', 'onDragOver(event);');
     dragSlot.setAttribute('ondrop', 'onDrop(event)');
 
     let dragItem = document.createElement('img');
-    dragItem.setAttribute('id', item[0]);
+    dragItem.setAttribute('id', dropIcon[0]);
     addClass(dragItem, 'dragItem');
-    dragItem.setAttribute('draggable', item[1].draggable);
+    dragItem.setAttribute('draggable', dropIcon[1].draggable);
     dragItem.setAttribute('ondragstart', 'onDragStart(event)');
-    // dragItem.setAttribute('src', 'images/' + item[1].href);
-    dragItem.setAttribute('src', item[1].href);
-    dragItem.setAttribute('alt', item[1].altText);
+    // dragItem.setAttribute('src', 'images/' + workingItem[1].href);
+    dragItem.setAttribute('src', dropIcon[1].href);
+    dragItem.setAttribute('alt', dropIcon[1].altText);
 
     dragSlot.appendChild(dragItem);
     dragBox.appendChild(dragSlot);
   });
 
-  definitionsArr.forEach(function(item) {
+  definitionsArr.forEach(function(definition) {
     let dropSlot = document.createElement('section');
-    dropSlot.setAttribute('id', item[0]);
+    dropSlot.setAttribute('id', definition[0]);
     addClass(dropSlot, 'dropSlot');
     dropSlot.setAttribute('ondragover', 'onDragOver(event)');
     dropSlot.setAttribute('ondrop', 'onDrop(event)');
 
     let dropText = document.createElement('p');
     addClass(dropText, 'dropText');
-    dropText.innerHTML = item[1];
+    dropText.innerHTML = definition[1];
 
     dropBox.appendChild(dropText);
     dropBox.appendChild(dropSlot);

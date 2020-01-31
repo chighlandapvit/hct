@@ -214,9 +214,9 @@ const courseData = {
             definition3: 'An option that is the first choice.'
           },
           answers: {
-            answer1: 'image1, definition3',
-            answer2: 'image2, definition2',
-            answer3: 'image3, definition1'
+            answer1: ['image1', 'definition3'],
+            answer2: ['image2', 'definition2'],
+            answer3: ['image3', 'definition1']
           }
         }
       }

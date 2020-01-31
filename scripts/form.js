@@ -12,31 +12,20 @@ function choiceSubmit(event) {
       userSelection.push(choiceBtns[i].value);
     }
   }
-  validateChecked(userSelection, chalAnswers);
+  if (userSelection.length == 0) {
+    let msgHeading = 'Stop right there!',
+      msgBody = 'You must make a selection.';
 
-  // console.log(userSelection);
-  // console.log(chalAnswers);
-}
-
-function validateChecked(guesses, answers) {
-  if (guesses.length == 0) {
-    let mHeading = 'Stop right there!',
-      mMessage = 'You must make a selection.';
-    makeModalWindow(mHeading, mMessage);
+    makeModalWindow(msgHeading, msgBody);
   } else {
-    for (let i = 0; answers.length < i; i++) {
-      if (guesses[i] !== answers[i]) {
-        console.log('nah, man');
-      }
-    }
-    console.log(guesses, answers);
+    validateSelection(userSelection, chalAnswers);
   }
 }
 
 function dropDownSubmit(event) {
   event.preventDefault();
   let selectForm = document.getElementById('selectForm');
-  // selectForm.preventDefault();
+  userSelection = [];
 
   let mHeading = 'Go no further!',
     mMessage = 'You must choose an option.';
@@ -44,18 +33,19 @@ function dropDownSubmit(event) {
   if (selectForm.value == 'default') {
     makeModalWindow(mHeading, mMessage);
   } else {
-    console.log(selectForm.value);
+    userSelection.push(selectForm.value);
+    validateSelection(userSelection, chalAnswers);
   }
 }
 
 // drag and drop functionality
 let dragItem = document.getElementsByClassName('dragItem'),
   dropSlot = document.getElementsByClassName('dropSlot');
-// dropBoxes = document.getElementsByClassName('dropBox');
 
 function dragSubmit() {
   let dropBoxArr = [];
   let dropItemArr = [];
+  userSelection = [];
 
   for (let i = 0; i < dropBox.children.length; i++) {
     if (dropBox.children[i].id.match(/definition/)) {
@@ -72,12 +62,44 @@ function dragSubmit() {
   }
 
   if (dropItemArr.length < dropBoxArr.length) {
-    // alert('You must match all of the items with their definitions.');
     let mHeading = 'Hold on a minute!',
       mMessage = 'You must match all of the items with their definitions.';
     makeModalWindow(mHeading, mMessage);
   } else {
-    console.log(dropItemArr);
+    dropBoxArr.forEach(function(dropBoxSlot) {
+      let dropIconPair = [];
+      dropIconPair.push(dropBoxSlot.children[0].id, dropBoxSlot.id);
+
+      userSelection.push(dropIconPair);
+    });
+    validateDragAndDrop(userSelection, chalAnswers);
+  }
+}
+
+function validateDragAndDrop(guesses, answers) {
+  let correctGuesses = 0;
+  guesses.forEach(function(guess) {
+    for (let i = 0; i < answers.length; i++) {
+      if (JSON.stringify(guess) === JSON.stringify(answers[i])) {
+        correctGuesses += 1;
+      }
+    }
+  });
+
+  if (correctGuesses == answers.length) {
+    console.log('You are good at this kind of thing!');
+  } else {
+    console.log('Those are not the right pairs...');
+  }
+  console.log(correctGuesses);
+}
+
+// validate answers
+function validateSelection(guesses, answers) {
+  if (JSON.stringify(guesses) === JSON.stringify(answers)) {
+    console.log('That is correct, sir!');
+  } else {
+    console.log('Not quite right...');
   }
 }
 

@@ -35,7 +35,7 @@ function createDisplay(page) {
 }
 
 // create error window
-function makeModalWindow(mHeading, mMessage) {
+function makeModalWindow(msgHeading, msgBody) {
   let modalContainer = document.createElement('section');
   addClass(modalContainer, 'modalContainer');
 
@@ -47,11 +47,11 @@ function makeModalWindow(mHeading, mMessage) {
 
   let modalHeading = document.createElement('h1');
   addClass(modalHeading, 'modalHeading');
-  modalHeading.innerHTML = mHeading;
+  modalHeading.innerHTML = msgHeading;
 
   let modalMessage = document.createElement('p');
   addClass(modalMessage, 'modalMessage');
-  modalMessage.innerHTML = mMessage;
+  modalMessage.innerHTML = msgBody;
 
   let modalBtn = document.createElement('button');
   addClass(modalBtn, 'btn');
@@ -213,6 +213,11 @@ function makeChallengeForm(formContent) {
 }
 
 function makeDropDown(dropDownContent) {
+  chalAnswers = [];
+  Object.entries(dropDownContent.answers).forEach(function(answer) {
+    chalAnswers.push(answer[1]);
+  });
+
   let form = document.createElement('form');
   form.setAttribute('id', 'choiceForm');
   form.setAttribute('onsubmit', 'dropDownSubmit(event)');
@@ -257,6 +262,11 @@ function makeDropDown(dropDownContent) {
 }
 
 function makeDragAndDrop(dropContent) {
+  chalAnswers = [];
+  Object.entries(dropContent.answers).forEach(function(answer) {
+    chalAnswers.push(answer[1]);
+  });
+
   let dropBoxContainer = document.createElement('section');
   addClass(dropBoxContainer, 'dropBoxContainer');
 

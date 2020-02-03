@@ -17,6 +17,8 @@ function createDisplay(page) {
       createdElements.push(makeImg(workingItem[1]));
     } else if (workingItem[0].match(/video/)) {
       createdElements.push(makeVideo(workingItem[1]));
+    } else if (workingItem[0].match(/audio/)) {
+      createdElements.push(makeAudio(workingItem[1]));
     } else if (workingItem[0].match(/form/)) {
       createdElements.push(makeChallengeForm(workingItem[1]));
     } else if (workingItem[0].match(/dropdown/)) {
@@ -164,6 +166,16 @@ function makeVideo(videoContent) {
   }
 
   return video;
+}
+
+function makeAudio(audioContent) {
+  let audio = document.createElement('audio');
+  addClass(audio, 'audio');
+  audio.setAttribute('src', audioContent.href);
+  audio.setAttribute('type', 'audio/mpeg');
+  audio.setAttribute('controls', '');
+
+  return audio;
 }
 
 function makeChallengeForm(formContent) {

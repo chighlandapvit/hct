@@ -41,8 +41,8 @@ function dropDownSubmit(event) {
 
 // dragAndDrop submission handler
 function dragSubmit() {
-  let dropBoxArr = [];
-  let dropItemArr = [];
+  let dropBoxArr = [],
+    dropItemArr = [];
   userSelection = [];
 
   for (let i = 0; i < dropBox.children.length; i++) {

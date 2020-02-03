@@ -11,9 +11,9 @@ body {
   width: 100%;
   color: #fffafa;
   font-size: 1em;
-  -webkit-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
-  -moz-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
   box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  -moz-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
+  -webkit-box-shadow: 0.1em 0.1em 1.5em rgba(54, 54, 54, 1);
 }
 
 img,
@@ -79,6 +79,8 @@ body {
   background-color: #1f1f1f;
   text-shadow: 0.1em 0.1em 0.1em rgba(109, 109, 109, 0.082);
   overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 #footer {
@@ -362,12 +364,13 @@ body {
   right: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(85, 84, 84, 0.397);
 }
 
-.modalInside {
-  /* display: table-cell;
+/* .modalInside { */
+/* display: table-cell;
   vertical-align: middle; */
-}
+/* } */
 
 /* .modalWindow {
   margin: auto;

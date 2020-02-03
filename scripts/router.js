@@ -6,12 +6,11 @@ function routePage(event) {
 
   for (let i = 0; i < pages.length; i++) {
     if (pages[i][1].pageNumber == pageLink) {
-      // let pageUrl = 'localhost:9000/' + pages[i][1].title;
-      // let pUrl = '/' + pages[i][1].title;
+      // add page title to browser address bar
+      document.location.hash = pages[i][1].title;
 
-      // window.history.pushState('object or string', pages[i][1].title, pageUrl);
-      // window.history.pushState('object or string', pages[i][1].title, pUrl);
-
+      // set currentPageIndex to equal the clicked page's pageNumber
+      currentPage = pages[i][1];
       currentPageIndex = pages[i][1].pageNumber;
       pageReadout.innerHTML =
         'PAGE ' + currentPageIndex + ' OF ' + pages.length;

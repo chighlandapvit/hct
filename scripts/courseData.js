@@ -90,6 +90,9 @@ const courseData = {
           size: 'little',
           href: 'https://i.imgur.com/1QcFc4w.png',
           altText: 'A beaker filled with chemicals.'
+        },
+        audio1: {
+          href: 'audio/mc30.mp3'
         }
       }
     },

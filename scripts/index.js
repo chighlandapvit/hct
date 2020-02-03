@@ -8,6 +8,19 @@ let pages = [],
   currentPage,
   currentPageIndex;
 
+// window.onhashchange = function() {
+// for (let i = 0; i < pages.length; i++) {
+//   if (pages[i][1].title === location.hash) {
+//   } else {
+//     console.log('invalid url...');
+//   }
+// }
+// btnStatus();
+
+// mainContainer.innerHTML = '';
+// createDisplay(currentPage.elements);
+// };
+
 // on window load
 function loader() {
   // makeModalWindow(

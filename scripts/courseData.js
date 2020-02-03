@@ -129,9 +129,9 @@ const courseData = {
         form1: {
           type: 'radio',
           options: {
-            option1: 'Cat',
-            option2: 'Dog',
-            option3: 'Pig',
+            option1: 'Demon-Cat',
+            option2: 'Doggo',
+            option3: 'Piggy',
             option4: 'Ferret'
           },
           answers: {

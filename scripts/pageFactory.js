@@ -209,6 +209,10 @@ function makeChallengeForm(formContent) {
 
   form.appendChild(formSubmit);
 
+  nextBtn.setAttribute('disabled', '');
+  removeClass(nextBtn, 'btn');
+  addClass(nextBtn, 'disabledBtn');
+
   return form;
 }
 
@@ -258,6 +262,10 @@ function makeDropDown(dropDownContent) {
   form.appendChild(br);
   form.appendChild(formSubmit);
 
+  nextBtn.setAttribute('disabled', '');
+  removeClass(nextBtn, 'btn');
+  addClass(nextBtn, 'disabledBtn');
+
   return form;
 }
 
@@ -270,11 +278,11 @@ function makeDragAndDrop(dropContent) {
   let dropBoxContainer = document.createElement('section');
   addClass(dropBoxContainer, 'dropBoxContainer');
 
-  let chalSubBtn = document.createElement('button');
-  chalSubBtn.setAttribute('id', 'chalSubBtn');
-  addClass(chalSubBtn, 'chalSubBtn');
-  chalSubBtn.setAttribute('onclick', 'dragSubmit()');
-  chalSubBtn.innerHTML = 'SUBMIT';
+  let dragSubBtn = document.createElement('button');
+  dragSubBtn.setAttribute('id', 'dragSubBtn');
+  addClass(dragSubBtn, 'chalSubBtn');
+  dragSubBtn.setAttribute('onclick', 'dragSubmit()');
+  dragSubBtn.innerHTML = 'SUBMIT';
 
   let dragBox = document.createElement('section');
   dragBox.setAttribute('id', 'dragBox');
@@ -323,7 +331,11 @@ function makeDragAndDrop(dropContent) {
 
   dropBoxContainer.appendChild(dragBox);
   dropBoxContainer.appendChild(dropBox);
-  dropBoxContainer.appendChild(chalSubBtn);
+  dropBoxContainer.appendChild(dragSubBtn);
+
+  nextBtn.setAttribute('disabled', '');
+  removeClass(nextBtn, 'btn');
+  addClass(nextBtn, 'disabledBtn');
 
   return dropBoxContainer;
 }

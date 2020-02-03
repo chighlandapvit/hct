@@ -76,15 +76,27 @@ function dragSubmit() {
 
 // validate form answers
 function validateSelection(guesses, answers) {
+  let formSubBtn = document.getElementById('formSubmit');
+
   if (JSON.stringify(guesses) === JSON.stringify(answers)) {
     console.log('That is correct, sir!');
   } else {
     console.log('Not quite right...');
   }
+
+  formSubBtn.setAttribute('disabled', '');
+  removeClass(formSubBtn, 'chalSubBtn');
+  addClass(formSubBtn, 'disabledBtn');
+
+  nextBtn.removeAttribute('disabled');
+  removeClass(nextBtn, 'disabledBtn');
+  addClass(nextBtn, 'btn');
 }
 
 // validate dragAndDrop answers
 function validateDragAndDrop(guesses, answers) {
+  let dragSubBtn = document.getElementById('dragSubBtn');
+
   let correctGuesses = 0;
 
   guesses.forEach(function(guess) {
@@ -98,9 +110,17 @@ function validateDragAndDrop(guesses, answers) {
   if (correctGuesses == answers.length) {
     console.log('You are good at this kind of thing!');
   } else {
-    console.log('Those are not the right pairs...');
+    console.log('Those are not the correct pairs...');
   }
-  console.log(correctGuesses);
+
+  dragSubBtn.setAttribute('disabled', '');
+  removeClass(dragSubBtn, 'chalSubBtn');
+  addClass(dragSubBtn, 'disabledBtn');
+
+  nextBtn.removeAttribute('disabled');
+  removeClass(nextBtn, 'disabledBtn');
+  addClass(nextBtn, 'btn');
+  // console.log(correctGuesses);
 }
 
 // drag and drop functionality

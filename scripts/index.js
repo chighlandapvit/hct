@@ -114,17 +114,18 @@ function loader() {
   }
 
   // expands and collapses table-of-contents menu
-  let menuBtn = document.getElementById('menuBtn'),
+  let screenOverlay = document.getElementById('screenOverlay'),
+    menuBtn = document.getElementById('menuBtn'),
     menu = document.getElementById('menu');
 
   menuBtn.addEventListener('click', function() {
-    if (hasClass(menu, 'invisible')) {
-      removeClass(menu, 'invisible');
+    if (hasClass(screenOverlay, 'invisible')) {
+      removeClass(screenOverlay, 'invisible');
 
       removeClass(menuBtn, 'btn');
       addClass(menuBtn, 'altBtn');
     } else {
-      addClass(menu, 'invisible');
+      addClass(screenOverlay, 'invisible');
 
       removeClass(menuBtn, 'altBtn');
       addClass(menuBtn, 'btn');

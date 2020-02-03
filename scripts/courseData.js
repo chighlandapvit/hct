@@ -24,8 +24,8 @@ const courseData = {
     },
     page2: {
       pageType: 'display',
-      pageName: 'Physics in Space',
-      title: 'physicsinspace',
+      pageName: 'Humans in Space',
+      title: 'humansinspace',
       elements: {
         heading: 'Introduction Continued...',
         image1: {

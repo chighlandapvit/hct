@@ -1,7 +1,7 @@
 let userSelection = [],
   chalAnswers = [];
 
-// form submit button event handling
+// form submission handler
 function choiceSubmit(event) {
   event.preventDefault();
   let choiceBtns = document.getElementsByClassName('choiceBtn');
@@ -12,6 +12,7 @@ function choiceSubmit(event) {
       userSelection.push(choiceBtns[i].value);
     }
   }
+
   if (userSelection.length == 0) {
     let msgHeading = 'Stop right there!',
       msgBody = 'You must make a selection.';
@@ -38,10 +39,7 @@ function dropDownSubmit(event) {
   }
 }
 
-// drag and drop functionality
-let dragItem = document.getElementsByClassName('dragItem'),
-  dropSlot = document.getElementsByClassName('dropSlot');
-
+// dragAndDrop submission handler
 function dragSubmit() {
   let dropBoxArr = [];
   let dropItemArr = [];
@@ -76,8 +74,19 @@ function dragSubmit() {
   }
 }
 
+// validate form answers
+function validateSelection(guesses, answers) {
+  if (JSON.stringify(guesses) === JSON.stringify(answers)) {
+    console.log('That is correct, sir!');
+  } else {
+    console.log('Not quite right...');
+  }
+}
+
+// validate dragAndDrop answers
 function validateDragAndDrop(guesses, answers) {
   let correctGuesses = 0;
+
   guesses.forEach(function(guess) {
     for (let i = 0; i < answers.length; i++) {
       if (JSON.stringify(guess) === JSON.stringify(answers[i])) {
@@ -94,14 +103,9 @@ function validateDragAndDrop(guesses, answers) {
   console.log(correctGuesses);
 }
 
-// validate answers
-function validateSelection(guesses, answers) {
-  if (JSON.stringify(guesses) === JSON.stringify(answers)) {
-    console.log('That is correct, sir!');
-  } else {
-    console.log('Not quite right...');
-  }
-}
+// drag and drop functionality
+let dragItem = document.getElementsByClassName('dragItem'),
+  dropSlot = document.getElementsByClassName('dropSlot');
 
 function onDragStart(event) {
   event.dataTransfer.setData('text/plain', event.target.id);
@@ -123,6 +127,7 @@ function onDrop(event) {
   event.dataTransfer.clearData();
 }
 
+// closes modal window and removes from DOM
 function closeModalWindow() {
   for (i = 0; i < mainContainer.children.length; i++) {
     if (hasClass(mainContainer.children[i], 'modalContainer')) {

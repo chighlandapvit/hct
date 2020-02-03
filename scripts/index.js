@@ -50,7 +50,7 @@ function loader() {
     createDisplay(currentPage[1].elements);
   }
 
-  function makeMenu(modArr) {
+  function makeMenu(modArr, pages) {
     let menu = document.getElementById('menu');
 
     let menuList = document.createElement('ul');
@@ -76,9 +76,9 @@ function loader() {
         addClass(pageItem, 'pageItem');
 
         pageItem.innerHTML =
-          '<a id="item' +
+          '<a id="' +
           page[1].pageNumber +
-          '" class="pageLink" href="#">' +
+          '" class="pageLink" href="" onclick="routePage(event)">' +
           page[1].pageName +
           '</a>';
 
@@ -105,6 +105,10 @@ function loader() {
 
       menuList.appendChild(modBox);
     });
+
+    // pages.forEach(function(page) {
+    //   routes.push(page[1].title);
+    // });
 
     menu.appendChild(menuList);
   }
@@ -133,18 +137,7 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex--;
 
-    // if currentPage is the first page, disable the button
-    if (currentPageIndex == 1) {
-      prevBtn.setAttribute('disabled', '');
-      removeClass(prevBtn, 'btn');
-      addClass(prevBtn, 'disabledBtn');
-    }
-    // if currentPage is not the last page, enable 'next page' button
-    if (currentPageIndex < pages.length) {
-      nextBtn.removeAttribute('disabled');
-      removeClass(nextBtn, 'disabledBtn');
-      addClass(nextBtn, 'btn');
-    }
+    btnStatus();
 
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
@@ -164,18 +157,7 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex++;
 
-    // if currentPage is the last page, disable the button
-    if (currentPageIndex == pages.length) {
-      nextBtn.setAttribute('disabled', '');
-      removeClass(nextBtn, 'btn');
-      addClass(nextBtn, 'disabledBtn');
-    }
-    // if currentPage is not the first page, enable 'next page' button
-    if (currentPageIndex > 1) {
-      prevBtn.removeAttribute('disabled');
-      removeClass(prevBtn, 'disabledBtn');
-      addClass(prevBtn, 'btn');
-    }
+    btnStatus();
 
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
@@ -189,6 +171,33 @@ function loader() {
     // create HTML page and append to mainContainer
     createDisplay(currentPage[1].elements);
   });
+}
+
+function btnStatus() {
+  // if currentPage is the first page, disable the button
+  if (currentPageIndex == 1) {
+    prevBtn.setAttribute('disabled', '');
+    removeClass(prevBtn, 'btn');
+    addClass(prevBtn, 'disabledBtn');
+  }
+  // if currentPage is not the last page, enable 'next page' button
+  if (currentPageIndex < pages.length) {
+    nextBtn.removeAttribute('disabled');
+    removeClass(nextBtn, 'disabledBtn');
+    addClass(nextBtn, 'btn');
+  }
+  // if currentPage is the last page, disable the button
+  if (currentPageIndex == pages.length) {
+    nextBtn.setAttribute('disabled', '');
+    removeClass(nextBtn, 'btn');
+    addClass(nextBtn, 'disabledBtn');
+  }
+  // if currentPage is not the first page, enable 'next page' button
+  if (currentPageIndex > 1) {
+    prevBtn.removeAttribute('disabled');
+    removeClass(prevBtn, 'disabledBtn');
+    addClass(prevBtn, 'btn');
+  }
 }
 
 // tocBtn.addEventListener("click", function() {

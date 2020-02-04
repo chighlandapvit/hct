@@ -7,11 +7,14 @@ let progBar = document.getElementById('progBar'),
 let audioPlayer = document.getElementById('audioPlayer');
 
 function removeAudioInfo() {
+  audioPlayer.pause();
+  audioPlayer.load();
+
   audioPlayer.removeAttribute('src');
   audioPlayer.removeAttribute('type');
 
-  progBar.setAttribute('max', 0);
-  // progBar.setAttribute('value', 0);
+  addClass(pauseBtn, 'invisible');
+  removeClass(playBtn, 'invisible');
 }
 
 function getPlayerTime() {
@@ -36,11 +39,6 @@ function getPlayerTime() {
     replayBtn.setAttribute('disabled', '');
     removeClass(replayBtn, 'audioBtn');
     addClass(replayBtn, 'disabledAudioBtn');
-
-    // pause audio
-    audioPlayer.pause();
-    addClass(pauseBtn, 'invisible');
-    removeClass(playBtn, 'invisible');
 
     // progBar.setAttribute('max', 0);
     // progBar.setAttribute('value', 0);

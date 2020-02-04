@@ -88,6 +88,116 @@ body {
   border-radius: 0 0 0.2em 0.2em;
 }
 
+#audioBox {
+  float: right;
+  margin: 0.2% 5%;
+  padding: 0.4%;
+  width: 25%;
+  height: 2.2em;
+  background-color: #1f1f1f;
+}
+
+#progBar {
+  -webkit-appearance: none;
+  margin: 1% 0;
+  width: 55%;
+  height: 0.2em;
+  background: transparent;
+}
+
+#progBar::-webkit-slider-runnable-track {
+  cursor: pointer;
+  width: 55%;
+  height: 0.2em;
+  background: #fffafa;
+  /* border-radius: 0.2em; */
+  border: solid 0.05em #696969;
+}
+
+#progBar::-moz-range-track {
+  cursor: pointer;
+  width: 50%;
+  height: 0.2em;
+  background: #fffafa;
+  /* border-radius: 0.2em; */
+  border: solid 0.05em #696969;
+}
+
+#progBar::-ms-track {
+  cursor: pointer;
+  width: 55%;
+  height: 0.2em;
+  background: transparent;
+  border-width: 0.05em;
+  border-color: transparent;
+  color: transparent;
+}
+
+#progBar::-ms-fill-upper {
+  background: #fffafa;
+  border: solid 0.05em #696969;
+  /* border-radius: 0.2em; */
+}
+
+#progBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* margin-top: -8.5%; */
+  margin-top: -0.7em;
+  cursor: pointer;
+  height: 1.5em;
+  width: 0.8em;
+  border-radius: 0.2em;
+  border: solid 0.05em #1f1f1f;
+  background: #fffafa;
+}
+
+#progBar::-moz-range-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  height: 1.5em;
+  width: 0.8em;
+  border-radius: 0.2em;
+  border: solid 0.05em #1f1f1f;
+  background: #fffafa;
+}
+
+#progBar::-ms-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  height: 1.5em;
+  width: 0.8em;
+  border-radius: 0.2em;
+  border: solid 0.05em #1f1f1f;
+  background: #fffafa;
+}
+
+.audioBtn,
+.disabledAudioBtn {
+  margin-right: 2%;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
+  font-weight: bold;
+}
+
+.audioBtn {
+  background-color: #1f1f1f;
+  color: #fffafa;
+  border: solid 0.05em #fffafa;
+}
+
+.disabledAudioBtn {
+  background-color: #1f1f1f;
+  border-color: #696969;
+  border: solid 0.05em #696969;
+}
+
+.audioBtn:hover {
+  cursor: pointer;
+  background-color: #fffafa;
+  color: #1f1f1f;
+}
+
 #screenOverlay {
   position: absolute;
   top: 0;
@@ -274,7 +384,8 @@ body {
 
 .btn:active,
 .altBtn:active,
-.chalSubBtn:active {
+.chalSubBtn:active,
+.audioBtn:active {
   border: solid 0.05em #0000ff;
   -webkit-text-stroke: 0.02em #0000ff;
   filter: brightness(80%);

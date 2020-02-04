@@ -15,10 +15,14 @@ function routePage(event) {
       pageReadout.innerHTML =
         'PAGE ' + currentPageIndex + ' OF ' + pages.length;
 
+      removeAudioInfo();
+
       btnStatus();
 
       mainContainer.innerHTML = '';
       createDisplay(pages[i][1].elements);
+
+      getPlayerTime();
     }
   }
 }

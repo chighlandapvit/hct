@@ -8,6 +8,9 @@ let pages = [],
   currentPage,
   currentPageIndex;
 
+// let audioPlayer = document.getElementById('audioPlayer'),
+//   playBtn = document.getElementById('playBtn');
+
 // window.onhashchange = function() {
 // for (let i = 0; i < pages.length; i++) {
 //   if (pages[i][1].title === location.hash) {
@@ -27,6 +30,8 @@ function loader() {
   //   'Wait a second...',
   //   'Hey, we gotta make this thing look right.'
   // );
+  getPlayerTime();
+
   initData();
   // read and distribute the dataSet
   function initData() {
@@ -57,13 +62,13 @@ function loader() {
     pageReadout.innerHTML = 'PAGE ' + currentPageIndex + ' OF ' + pages.length;
 
     // create table-of-contents menu
-    makeMenu(moduleArr, pages);
+    makeMenu(moduleArr);
 
     // create first page and append to view
     createDisplay(currentPage[1].elements);
   }
 
-  function makeMenu(modArr, pages) {
+  function makeMenu(modArr) {
     let menu = document.getElementById('menu');
 
     let menuList = document.createElement('ul');
@@ -151,6 +156,8 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex--;
 
+    removeAudioInfo();
+
     btnStatus();
 
     for (let i = 0; i < pages.length; i++) {
@@ -164,6 +171,8 @@ function loader() {
 
     // create HTML page and append to mainContainer
     createDisplay(currentPage[1].elements);
+
+    getPlayerTime();
   });
 
   // load next page when corresponding button is clicked
@@ -171,6 +180,8 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex++;
 
+    removeAudioInfo();
+
     btnStatus();
 
     for (let i = 0; i < pages.length; i++) {
@@ -184,6 +195,8 @@ function loader() {
 
     // create HTML page and append to mainContainer
     createDisplay(currentPage[1].elements);
+
+    getPlayerTime();
   });
 }
 

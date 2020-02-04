@@ -18,7 +18,7 @@ function createDisplay(page) {
     } else if (workingItem[0].match(/video/)) {
       createdElements.push(makeVideo(workingItem[1]));
     } else if (workingItem[0].match(/audio/)) {
-      createdElements.push(makeAudio(workingItem[1]));
+      makeAudio(workingItem[1]);
     } else if (workingItem[0].match(/form/)) {
       createdElements.push(makeChallengeForm(workingItem[1]));
     } else if (workingItem[0].match(/dropdown/)) {
@@ -169,13 +169,8 @@ function makeVideo(videoContent) {
 }
 
 function makeAudio(audioContent) {
-  let audio = document.createElement('audio');
-  addClass(audio, 'audio');
-  audio.setAttribute('src', audioContent.href);
-  audio.setAttribute('type', 'audio/mpeg');
-  audio.setAttribute('controls', '');
-
-  return audio;
+  audioPlayer.setAttribute('src', audioContent.href);
+  audioPlayer.setAttribute('type', 'audio/mpeg');
 }
 
 function makeChallengeForm(formContent) {

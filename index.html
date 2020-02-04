@@ -25,19 +25,28 @@
     </section>
 
     <footer id="footer">
-      <nav>
-        <button id="menuBtn" class="btn navBtn">MENU</button>
-        <section class="floatRight">
-          <button id="prevBtn" class="btn navBtn">PREVIOUS</button>
-          <span id="pageReadout"></span>
-          <button id="nextBtn" class="btn navBtn">NEXT</button>
-        </section>
+      <button id="menuBtn" class="btn navBtn">MENU</button>
+
+      <nav id="navBox" class="floatRight">
+        <button id="prevBtn" class="btn navBtn">PREVIOUS</button>
+        <span id="pageReadout"></span>
+        <button id="nextBtn" class="btn navBtn">NEXT</button>
       </nav>
+
+      <section id="audioBox" class="floatRight">
+        <audio id="audioPlayer"></audio>
+        <input id="progBar" type="range" value="0" min="1" max="100" />
+        <button id="volumeBtn" class="floatRight audioBtn">A</button>
+        <button id="replayBtn" class="floatRight audioBtn">&#8634;</button>
+        <button id="playBtn" class="floatRight disabledAudioBtn">></button>
+        <button id="pauseBtn" class="floatRight audioBtn invisible">II</button>
+      </section>
     </footer>
-    <script src="./scripts/polyfills.js"></script>
     <script src="./scripts/courseData.js"></script>
+    <script src="./scripts/audioPlayer.js"></script>
     <script src="./scripts/pageFactory.js"></script>
     <script src="./scripts/form.js"></script>
+    <script src="./scripts/polyfills.js"></script>
     <script src="./scripts/router.js"></script>
     <script src="./scripts/index.js"></script>
   </body>

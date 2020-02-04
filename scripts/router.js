@@ -17,7 +17,7 @@ function routePage(event) {
 
       removeAudioInfo();
 
-      btnStatus();
+      navBtnStatus();
 
       mainContainer.innerHTML = '';
       createDisplay(pages[i][1].elements);

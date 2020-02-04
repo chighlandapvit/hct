@@ -4,79 +4,78 @@ let progBar = document.getElementById('progBar'),
   replayBtn = document.getElementById('replayBtn'),
   volumeBtn = document.getElementById('volumeBtn');
 
-let audioPlayer = document.getElementById('audioPlayer'),
-  currentTime = audioPlayer.currentTime,
-  duration = audioPlayer.duration;
-
-// function getPlayerTime() {
-//   if (audioPlayer.getAttribute('src') === '') {
-//     currentTime = audioPlayer.currentTime;
-//     duration = audioPlayer.duration;
-//   } else {
-//     audioPlayer.setAttribute('src', '');
-//     audioPlayer.removeAttribute('type');
-//     currentTime = 0;
-//     duration = 100;
-//     // progBar.setAttribute('max', '100');
-//     // progBar.setAttribute('value', '0');
-//   }
-//   console.log(duration);
-// }
+let audioPlayer = document.getElementById('audioPlayer');
 
 function removeAudioInfo() {
   audioPlayer.removeAttribute('src');
   audioPlayer.removeAttribute('type');
+
+  progBar.setAttribute('max', 0);
+  // progBar.setAttribute('value', 0);
 }
 
 function getPlayerTime() {
+  // check whether or not the audioPlayer has a src
   if (audioPlayer.hasAttribute('src') == true) {
+    // enable play button
     playBtn.removeAttribute('disabled');
     removeClass(playBtn, 'disabledAudioBtn');
     addClass(playBtn, 'audioBtn');
 
+    // enable replay button
     replayBtn.removeAttribute('disabled');
     removeClass(replayBtn, 'disabledAudioBtn');
     addClass(replayBtn, 'audioBtn');
   } else {
+    // disable play button
     playBtn.setAttribute('disabled', '');
     removeClass(playBtn, 'audioBtn');
     addClass(playBtn, 'disabledAudioBtn');
 
+    // disable replay button
     replayBtn.setAttribute('disabled', '');
     removeClass(replayBtn, 'audioBtn');
     addClass(replayBtn, 'disabledAudioBtn');
 
-    // pause player if audio is playing
+    // pause audio
     audioPlayer.pause();
     addClass(pauseBtn, 'invisible');
     removeClass(playBtn, 'invisible');
+
+    // progBar.setAttribute('max', 0);
+    // progBar.setAttribute('value', 0);
   }
 }
 
+// play audio
 playBtn.addEventListener('click', function() {
   audioPlayer.play();
   addClass(playBtn, 'invisible');
   removeClass(pauseBtn, 'invisible');
 });
 
+// pause audio
 pauseBtn.addEventListener('click', function() {
   audioPlayer.pause();
   addClass(pauseBtn, 'invisible');
   removeClass(playBtn, 'invisible');
 });
 
+// replay audio
 replayBtn.addEventListener('click', function() {
   audioPlayer.load();
+
   if (hasClass(playBtn, 'invisible')) {
     audioPlayer.play();
   }
 });
 
+// adjust volume level
 volumeBtn.addEventListener('click', function() {
   //
 });
 
 audioPlayer.addEventListener('timeupdate', function() {
-  progBar.setAttribute('max', duration);
-  progBar.setAttribute('value', currentTime);
+  progBar.setAttribute('max', audioPlayer.duration);
+  progBar.setAttribute('value', audioPlayer.currentTime);
 });

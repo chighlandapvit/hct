@@ -8,9 +8,6 @@ let pages = [],
   currentPage,
   currentPageIndex;
 
-// let audioPlayer = document.getElementById('audioPlayer'),
-//   playBtn = document.getElementById('playBtn');
-
 // window.onhashchange = function() {
 // for (let i = 0; i < pages.length; i++) {
 //   if (pages[i][1].title === location.hash) {
@@ -18,7 +15,7 @@ let pages = [],
 //     console.log('invalid url...');
 //   }
 // }
-// btnStatus();
+// navBtnStatus();
 
 // mainContainer.innerHTML = '';
 // createDisplay(currentPage.elements);
@@ -158,7 +155,7 @@ function loader() {
 
     removeAudioInfo();
 
-    btnStatus();
+    navBtnStatus();
 
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
@@ -182,7 +179,7 @@ function loader() {
 
     removeAudioInfo();
 
-    btnStatus();
+    navBtnStatus();
 
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
@@ -200,7 +197,7 @@ function loader() {
   });
 }
 
-function btnStatus() {
+function navBtnStatus() {
   // if currentPage is the first page, disable the button
   if (currentPageIndex == 1) {
     prevBtn.setAttribute('disabled', '');
@@ -226,36 +223,3 @@ function btnStatus() {
     addClass(prevBtn, 'btn');
   }
 }
-
-// tocBtn.addEventListener("click", function() {
-//   tocMenu.classList.toggle("invisible");
-//   if (!helpBtn.hasAttribute("disabled") & !resBtn.hasAttribute("disabled")) {
-//     helpBtn.setAttribute("disabled", "true");
-//     resBtn.setAttribute("disabled", "true");
-//   } else {
-//     helpBtn.removeAttribute("disabled");
-//     resBtn.removeAttribute("disabled");
-//   }
-// });
-
-// helpBtn.addEventListener("click", function() {
-//   helpMenu.classList.toggle("invisible");
-//   if (!tocBtn.hasAttribute("disabled") & !resBtn.hasAttribute("disabled")) {
-//     tocBtn.setAttribute("disabled", "true");
-//     resBtn.setAttribute("disabled", "true");
-//   } else {
-//     tocBtn.removeAttribute("disabled");
-//     resBtn.removeAttribute("disabled");
-//   }
-// });
-
-// resBtn.addEventListener("click", function() {
-//   resMenu.classList.toggle("invisible");
-//   if (!tocBtn.hasAttribute("disabled") & !helpBtn.hasAttribute("disabled")) {
-//     tocBtn.setAttribute("disabled", "true");
-//     helpBtn.setAttribute("disabled", "true");
-//   } else {
-//     tocBtn.removeAttribute("disabled");
-//     helpBtn.removeAttribute("disabled");
-//   }
-// });

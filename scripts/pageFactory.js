@@ -171,6 +171,7 @@ function makeVideo(videoContent) {
 function makeAudio(audioContent) {
   audioPlayer.setAttribute('src', audioContent.href);
   audioPlayer.setAttribute('type', 'audio/mpeg');
+  // audioPlayer.setAttribute('autoplay', '');
 }
 
 function makeChallengeForm(formContent) {

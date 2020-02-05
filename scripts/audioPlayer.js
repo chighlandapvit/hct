@@ -9,6 +9,7 @@ let progBar = document.getElementById('progBar'),
 
 let audioPlayer = document.getElementById('audioPlayer');
 
+// reset the audioPlayer
 function removeAudioInfo() {
   audioPlayer.pause();
   audioPlayer.load();
@@ -18,12 +19,10 @@ function removeAudioInfo() {
 
   audioPlayer.removeAttribute('src');
   audioPlayer.removeAttribute('type');
-
-  playImg.setAttribute('src', 'images/play.png');
 }
 
+// check whether or not the audioPlayer has a src
 function getPlayerTime() {
-  // check whether or not the audioPlayer has a src
   if (audioPlayer.hasAttribute('src') == true) {
     // enable play button
     playBtn.removeAttribute('disabled');
@@ -39,6 +38,8 @@ function getPlayerTime() {
 
     // enable progress bar
     progBar.removeAttribute('disabled');
+    removeClass(progBar, 'disabledProgBar');
+    addClass(progBar, 'progBar');
   } else {
     // disable play button
     playBtn.setAttribute('disabled', '');
@@ -53,7 +54,9 @@ function getPlayerTime() {
     replayImg.setAttribute('src', 'images/replaygray.png');
 
     // disable progress bar
-    progBar.setAttribute('disabled', '');
+    progBar.setAttribute('disabled', 'true');
+    removeClass(progBar, 'progBar');
+    addClass(progBar, 'disabledProgBar');
   }
 }
 
@@ -107,13 +110,13 @@ replayBtn.addEventListener('mouseout', function() {
   replayImg.setAttribute('src', 'images/replay.png');
 });
 
-// adjust volume level
+// mute and unmute volume
 volumeBtn.addEventListener('click', function() {
-  if (audioPlayer.muted == true) {
-    audioPlayer.muted = false;
+  if (audioPlayer.muted != true) {
+    audioPlayer.muted = true;
     volImg.setAttribute('src', 'images/muteblack.png');
   } else {
-    audioPlayer.muted = true;
+    audioPlayer.muted = false;
     volImg.setAttribute('src', 'images/fullvolblack.png');
   }
 });
@@ -126,15 +129,6 @@ volumeBtn.addEventListener('mouseover', function() {
     volImg.setAttribute('src', 'images/muteblack.png');
   }
 });
-// volumeBtn.addEventListener('mouseover', function() {
-//   if (volImg.hasAttribute('src', 'images/fullvol.png')) {
-//     volImg.setAttribute('src', 'images/fullvolblack.png');
-//   } else if (volImg.hasAttribute('src', 'images/mute.png')) {
-//     volImg.setAttribute('src', 'images/muteblack.png');
-//   } else if (volImg.hasAttribute('src', 'images/halfvol.png')) {
-//     volImg.setAttribute('src', 'images/halfvolblack.png');
-//   }
-// });
 
 // volumeBtn hover off
 volumeBtn.addEventListener('mouseout', function() {
@@ -144,15 +138,6 @@ volumeBtn.addEventListener('mouseout', function() {
     volImg.setAttribute('src', 'images/mute.png');
   }
 });
-// volumeBtn.addEventListener('mouseout', function() {
-//   if (volImg.hasAttribute('src', 'images/fullvolblack.png')) {
-//     volImg.setAttribute('src', 'images/fullvol.png');
-//   } else if (volImg.hasAttribute('src', 'images/muteblack.png')) {
-//     volImg.setAttribute('src', 'images/mute.png');
-//   } else if (volImg.hasAttribute('src', 'images/halfvolblack.png')) {
-//     volImg.setAttribute('src', 'images/halfvol.png');
-//   }
-// });
 
 // link custom progress slider to audioPlayer play time
 audioPlayer.addEventListener('timeupdate', function() {

@@ -121,7 +121,7 @@ body {
 
 #progBar::-moz-range-track {
   cursor: pointer;
-  width: 50%;
+  width: 100%;
   height: 0.2em;
   background: #fffafa;
   /* border-radius: 0.2em; */
@@ -130,7 +130,7 @@ body {
 
 #progBar::-ms-track {
   cursor: pointer;
-  width: 55%;
+  width: 100%;
   height: 0.2em;
   background: transparent;
   border-width: 0.05em;
@@ -156,6 +156,11 @@ body {
   background: #fffafa;
 }
 
+#progBar::-webkit-slider-thumb:hover {
+  border: solid 0.09em #fffafa;
+  background: #1f1f1f;
+}
+
 #progBar::-moz-range-thumb {
   -webkit-appearance: none;
   cursor: pointer;
@@ -166,6 +171,11 @@ body {
   background: #fffafa;
 }
 
+#progBar::-moz-range-thumb:hover {
+  border: solid 0.09em #fffafa;
+  background: #1f1f1f;
+}
+
 #progBar::-ms-thumb {
   -webkit-appearance: none;
   cursor: pointer;
@@ -174,6 +184,11 @@ body {
   border-radius: 0.2em;
   border: solid 0.05em #1f1f1f;
   background: #fffafa;
+}
+
+#progBar::-ms-thumb:hover {
+  border: solid 0.09em #fffafa;
+  background: #1f1f1f;
 }
 
 .audioBtn,
@@ -191,15 +206,27 @@ body {
   border: solid 0.05em #fffafa;
 }
 
+.audioBtn:hover {
+  cursor: pointer;
+  background-color: #fffafa;
+  color: #1f1f1f;
+}
+
+.playerImg,
+.disabledPlayerImg {
+  margin-top: 0.2em;
+  width: 1em;
+}
+
 .disabledAudioBtn {
   background-color: #1f1f1f;
   border-color: #696969;
   border: solid 0.05em #696969;
 }
 
-.audioBtn:hover {
-  cursor: pointer;
-  background-color: #fffafa;
+.audioIcon {
+  margin-top: 0.2em;
+  width: 1em;
   color: #1f1f1f;
 }
 

@@ -36,10 +36,30 @@
       <section id="audioBox" class="floatRight">
         <audio id="audioPlayer"></audio>
         <input id="progBar" type="range" value="0" />
-        <button id="volumeBtn" class="floatRight audioBtn">A</button>
-        <button id="replayBtn" class="floatRight audioBtn">&#8634;</button>
-        <button id="playBtn" class="floatRight disabledAudioBtn">></button>
-        <button id="pauseBtn" class="floatRight audioBtn invisible">II</button>
+        <button id="volumeBtn" class="floatRight audioBtn">
+          <img
+            id="volImg"
+            class="playerImg"
+            src="images/fullvol.png"
+            alt="Volume button."
+          />
+        </button>
+        <button id="replayBtn" class="floatRight audioBtn">
+          <img
+            id="replayImg"
+            class="playerImg"
+            src="images/replaygray.png"
+            alt="Replay audio button."
+          />
+        </button>
+        <button id="playBtn" class="floatRight disabledAudioBtn">
+          <img
+            id="playImg"
+            class="playerImg"
+            src="images/playgray.png"
+            alt="Play and pause button."
+          />
+        </button>
       </section>
     </footer>
     <script src="./scripts/courseData.js"></script>

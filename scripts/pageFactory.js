@@ -41,10 +41,10 @@ function makeModalWindow(msgHeading, msgBody) {
   let modalContainer = document.createElement('section');
   addClass(modalContainer, 'modalContainer');
 
-  let modalInside = document.createElement('section');
+  let modalInside = document.createElement('div');
   addClass(modalInside, 'modalInside');
 
-  let modalWindow = document.createElement('section');
+  let modalWindow = document.createElement('div');
   addClass(modalWindow, 'modalWindow');
 
   let modalHeading = document.createElement('h1');
@@ -283,7 +283,7 @@ function makeDragAndDrop(dropContent) {
     chalAnswers.push(answer[1]);
   });
 
-  let dropBoxContainer = document.createElement('section');
+  let dropBoxContainer = document.createElement('div');
   addClass(dropBoxContainer, 'dropBoxContainer');
 
   let dragSubBtn = document.createElement('button');
@@ -292,11 +292,11 @@ function makeDragAndDrop(dropContent) {
   dragSubBtn.setAttribute('onclick', 'dragSubmit()');
   dragSubBtn.innerHTML = 'SUBMIT';
 
-  let dragBox = document.createElement('section');
+  let dragBox = document.createElement('div');
   dragBox.setAttribute('id', 'dragBox');
   addClass(dragBox, 'dragBox');
 
-  let dropBox = document.createElement('section');
+  let dropBox = document.createElement('div');
   dropBox.setAttribute('id', 'dropBox');
   addClass(dropBox, 'dropBox');
 
@@ -304,7 +304,7 @@ function makeDragAndDrop(dropContent) {
     definitionsArr = Object.entries(dropContent.definitions);
 
   dropIconsArr.forEach(function(dropIcon) {
-    let dragSlot = document.createElement('section');
+    let dragSlot = document.createElement('div');
     addClass(dragSlot, 'dragSlot');
     dragSlot.setAttribute('ondragover', 'onDragOver(event);');
     dragSlot.setAttribute('ondrop', 'onDrop(event)');
@@ -323,7 +323,7 @@ function makeDragAndDrop(dropContent) {
   });
 
   definitionsArr.forEach(function(definition) {
-    let dropSlot = document.createElement('section');
+    let dropSlot = document.createElement('div');
     dropSlot.setAttribute('id', definition[0]);
     addClass(dropSlot, 'dropSlot');
     dropSlot.setAttribute('ondragover', 'onDragOver(event)');

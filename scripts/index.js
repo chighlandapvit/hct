@@ -65,6 +65,7 @@ function loader() {
     createDisplay(currentPage[1].elements);
   }
 
+  // create table of contents menu with the data
   function makeMenu(modArr) {
     let menu = document.getElementById('menu');
 
@@ -121,6 +122,7 @@ function loader() {
       menuList.appendChild(modBox);
     });
 
+    // give the data to the router
     // pages.forEach(function(page) {
     //   routes.push(page[1].title);
     // });
@@ -128,7 +130,7 @@ function loader() {
     menu.appendChild(menuList);
   }
 
-  // expands and collapses table-of-contents menu
+  // expands and collapses table of contents menu
   let screenOverlay = document.getElementById('screenOverlay'),
     menuBtn = document.getElementById('menuBtn'),
     menu = document.getElementById('menu');
@@ -147,7 +149,7 @@ function loader() {
     }
   });
 
-  // load previous page when corresponding button is clicked
+  // load previous page when 'previous page' button is clicked
   prevBtn.addEventListener('click', function() {
     // clear the container and move the currentPageIndex backwards
     mainContainer.innerHTML = '';
@@ -157,6 +159,7 @@ function loader() {
 
     navBtnStatus();
 
+    // grab the data for the next page from pages array
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
         currentPage = pages[i];
@@ -172,7 +175,7 @@ function loader() {
     getPlayerTime();
   });
 
-  // load next page when corresponding button is clicked
+  // load next page when 'next page' button is clicked
   nextBtn.addEventListener('click', function() {
     mainContainer.innerHTML = '';
     currentPageIndex++;
@@ -181,6 +184,7 @@ function loader() {
 
     navBtnStatus();
 
+    // grab the data for the next page from pages array
     for (let i = 0; i < pages.length; i++) {
       if (pages[i][1].pageNumber == currentPageIndex) {
         currentPage = pages[i];
@@ -197,6 +201,7 @@ function loader() {
   });
 }
 
+// disable each page nav button if at start or end of data in pages array
 function navBtnStatus() {
   // if currentPage is the first page, disable the button
   if (currentPageIndex == 1) {

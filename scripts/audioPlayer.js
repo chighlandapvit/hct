@@ -139,13 +139,13 @@ volumeBtn.addEventListener('mouseout', function() {
   }
 });
 
-// link custom progress slider to audioPlayer play time
+// link custom progress slider to play time of HTML audioPlayer
 audioPlayer.addEventListener('timeupdate', function() {
   progBar.setAttribute('max', audioPlayer.duration);
   progBar.setAttribute('value', audioPlayer.currentTime);
 });
 
-// update audioPlayer current time location
+// update HTML audioPlayer's current time location
 progBar.addEventListener('click', function() {
   audioPlayer.currentTime = progBar.value;
 });

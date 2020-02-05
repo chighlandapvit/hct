@@ -36,7 +36,7 @@ function createDisplay(page) {
   mainContainer.appendChild(section);
 }
 
-// create error window
+// create modal window
 function makeModalWindow(msgHeading, msgBody) {
   let modalContainer = document.createElement('section');
   addClass(modalContainer, 'modalContainer');
@@ -70,7 +70,7 @@ function makeModalWindow(msgHeading, msgBody) {
   mainContainer.appendChild(modalContainer);
 }
 
-// create distinct HTML elements
+// create HTML elements
 function makeH1(h1Content) {
   let h1 = document.createElement('h1');
   h1.innerHTML = h1Content;

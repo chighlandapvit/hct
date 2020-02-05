@@ -39,7 +39,7 @@ if (!Object.entries) {
 }
 // allows the use of Object.assign in older browsers
 if (typeof Object.assign != 'function') {
-  // Must be writable: true, enumerable: false, configurable: true
+  // must be writable: true, enumerable: false, configurable: true
   Object.defineProperty(Object, 'assign', {
     value: function assign(target, varArgs) {
       // .length of function is 2
@@ -55,9 +55,9 @@ if (typeof Object.assign != 'function') {
         var nextSource = arguments[index];
 
         if (nextSource != null) {
-          // Skip over if undefined or null
+          // skip over if undefined or null
           for (var nextKey in nextSource) {
-            // Avoid bugs when hasOwnProperty is shadowed
+            // avoid bugs when hasOwnProperty is shadowed
             if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
               to[nextKey] = nextSource[nextKey];
             }

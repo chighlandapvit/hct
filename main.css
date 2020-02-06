@@ -77,6 +77,8 @@ body {
   border: none;
   color: #1f1f1f;
   font-weight: bold;
+  text-shadow: 0.05em 0.05em 0.1em rgba(255, 255, 255, 0.205),
+    0.1em 0.1em 0.1em rgba(0, 0, 0, 0.335);
 }
 
 #exitBtn:hover {

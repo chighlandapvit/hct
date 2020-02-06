@@ -67,7 +67,27 @@ body {
   margin-right: 0.5%;
   width: 3.4%;
   filter: drop-shadow(0.1em 0.1em 0.1em #1f1f1f);
-  /* box-shadow: 0.1em 0.1em 0.1em #1f1f1f; */
+}
+
+#exitBtn {
+  float: right;
+  margin: 0.02em 0.02em 0 1em;
+  width: 3em;
+  background: transparent;
+  border: none;
+  color: #1f1f1f;
+  font-weight: bold;
+}
+
+#exitBtn:hover {
+  cursor: pointer;
+  color: #fffafa;
+}
+
+#exitBtn:active {
+  color: #fffafa;
+  -webkit-text-stroke: 0.02em #0000ff;
+  filter: brightness(80%);
 }
 
 #mainContainer h1,

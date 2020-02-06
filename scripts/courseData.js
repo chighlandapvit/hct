@@ -9,8 +9,9 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'big',
-          href: 'https://i.imgur.com/Ay6uTAe.jpg',
-          altText: 'An airplane in a forest.',
+          // href: 'https://i.imgur.com/Ay6uTAe.jpg',
+          href: 'images/flight.jpg',
+          altText: 'Two small airplanes in the sky.',
           floatSide: 'right'
         },
         paragraph1:
@@ -31,7 +32,8 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'big',
-          href: 'https://i.imgur.com/4sBJ2nT.jpg',
+          // href: 'https://i.imgur.com/4sBJ2nT.jpg',
+          href: 'images/spaceman.jpg',
           altText: 'An astronaut floating above the Earth.',
           floatSide: 'left'
         },
@@ -42,13 +44,15 @@ const courseData = {
         image2: {
           draggable: 'false',
           size: 'tiny',
-          href: 'https://i.imgur.com/Jk2TIdg.png',
+          // href: 'https://i.imgur.com/Jk2TIdg.png',
+          href: 'images/rocketship.png',
           altText: 'A rocketship blasting off.'
         },
         image3: {
           draggable: 'false',
           size: 'tiny',
-          href: 'https://i.imgur.com/h8Bu1aQ.png',
+          // href: 'https://i.imgur.com/h8Bu1aQ.png',
+          href: 'images/moon.png',
           altText: "The Earth's moon, Luna."
         }
       }
@@ -76,19 +80,22 @@ const courseData = {
         image1: {
           draggable: 'false',
           size: 'little',
-          href: 'https://i.imgur.com/jsk9Dmt.png',
+          // href: 'https://i.imgur.com/jsk9Dmt.png',
+          href: 'images/little1.png',
           altText: 'A beaker filled with chemicals.'
         },
         image2: {
           draggable: 'false',
           size: 'little',
-          href: 'https://i.imgur.com/fwr8d08.png',
+          // href: 'https://i.imgur.com/fwr8d08.png',
+          href: 'images/little2.png',
           altText: 'A beaker filled with chemicals.'
         },
         image3: {
           draggable: 'false',
           size: 'little',
-          href: 'https://i.imgur.com/1QcFc4w.png',
+          // href: 'https://i.imgur.com/1QcFc4w.png',
+          href: 'images/little3.png',
           altText: 'A beaker filled with chemicals.'
         },
         audio1: {
@@ -196,17 +203,20 @@ const courseData = {
           items: {
             image1: {
               draggable: 'true',
-              href: 'https://i.imgur.com/szak2vY.png',
+              // href: 'https://i.imgur.com/szak2vY.png',
+              href: 'images/option1.png',
               altText: 'The first selection option.'
             },
             image2: {
               draggable: 'true',
-              href: 'https://i.imgur.com/CP9pvXu.png',
+              // href: 'https://i.imgur.com/CP9pvXu.png',
+              href: 'images/option2.png',
               altText: 'The second selection option.'
             },
             image3: {
               draggable: 'true',
-              href: 'https://i.imgur.com/ZG67skY.png',
+              // href: 'https://i.imgur.com/ZG67skY.png',
+              href: 'images/option3.png',
               altText: 'The third selection option.'
             }
           },

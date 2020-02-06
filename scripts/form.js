@@ -160,12 +160,3 @@ function onDrop(event) {
 
   event.dataTransfer.clearData();
 }
-
-// closes modal window and removes from DOM
-function closeModalWindow() {
-  for (i = 0; i < mainContainer.children.length; i++) {
-    if (hasClass(mainContainer.children[i], 'modalContainer')) {
-      mainContainer.removeChild(mainContainer.children[i]);
-    }
-  }
-}

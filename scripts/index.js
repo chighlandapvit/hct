@@ -1,4 +1,11 @@
+function runCourse() {
+  window.open('course.html');
+}
+
 let mainContainer = document.getElementById('mainContainer'),
+  // exitBtn = document.getElementById('exitBtn'),
+  exitImg = document.getElementById('exitImg'),
+  exitBtn = document.getElementById('exitBtn'),
   prevBtn = document.getElementById('prevBtn'),
   nextBtn = document.getElementById('nextBtn');
 
@@ -149,6 +156,14 @@ function loader() {
     }
   });
 
+  // exit course window
+  exitBtn.addEventListener('click', function() {
+    let mHeading = 'Exit Course';
+    let mMessage = 'Do you really wish to exit the course?';
+    // create warning modal
+    makeExitModal(mHeading, mMessage);
+  });
+
   // load previous page when 'previous page' button is clicked
   prevBtn.addEventListener('click', function() {
     // clear the container and move the currentPageIndex backwards
@@ -226,5 +241,19 @@ function navBtnStatus() {
     prevBtn.removeAttribute('disabled');
     removeClass(prevBtn, 'disabledBtn');
     addClass(prevBtn, 'btn');
+  }
+}
+
+// closes course window
+function closeCourseWindow() {
+  window.close();
+}
+
+// closes modal window and removes from DOM
+function closeModalWindow() {
+  for (i = 0; i < mainContainer.children.length; i++) {
+    if (hasClass(mainContainer.children[i], 'modalContainer')) {
+      mainContainer.removeChild(mainContainer.children[i]);
+    }
   }
 }

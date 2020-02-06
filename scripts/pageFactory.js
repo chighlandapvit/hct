@@ -36,6 +36,52 @@ function createDisplay(page) {
   mainContainer.appendChild(section);
 }
 
+// create exit modal window
+function makeExitModal(msgHeading, msgBody) {
+  let modalContainer = document.createElement('section');
+  addClass(modalContainer, 'modalContainer');
+
+  let modalInside = document.createElement('div');
+  addClass(modalInside, 'modalInside');
+
+  let modalWindow = document.createElement('div');
+  addClass(modalWindow, 'modalWindow');
+
+  let modalHeading = document.createElement('h1');
+  addClass(modalHeading, 'modalHeading');
+  modalHeading.innerHTML = msgHeading;
+
+  let modalMessage = document.createElement('p');
+  addClass(modalMessage, 'modalMessage');
+  modalMessage.innerHTML = msgBody;
+
+  let modalBtnBox = document.createElement('div');
+  addClass(modalBtnBox, 'modalBtnBox');
+
+  let modalBtnYes = document.createElement('button');
+  addClass(modalBtnYes, 'btn');
+  addClass(modalBtnYes, 'modalBtn');
+  modalBtnYes.setAttribute('onclick', 'closeCourseWindow(event)');
+  modalBtnYes.innerHTML = 'Yes';
+
+  let modalBtnNo = document.createElement('button');
+  addClass(modalBtnNo, 'btn');
+  addClass(modalBtnNo, 'modalBtn');
+  modalBtnNo.setAttribute('onclick', 'closeModalWindow()');
+  modalBtnNo.innerHTML = 'No';
+
+  modalBtnBox.appendChild(modalBtnYes);
+  modalBtnBox.appendChild(modalBtnNo);
+
+  modalWindow.appendChild(modalHeading);
+  modalWindow.appendChild(modalMessage);
+  modalWindow.appendChild(modalBtnBox);
+  modalInside.appendChild(modalWindow);
+  modalContainer.appendChild(modalInside);
+
+  mainContainer.appendChild(modalContainer);
+}
+
 // create modal window
 function makeModalWindow(msgHeading, msgBody) {
   let modalContainer = document.createElement('section');

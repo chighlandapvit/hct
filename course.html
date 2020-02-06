@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HCT</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body onload="loader()">
+    <header id="header">
+      <h1>Course Template</h1>
+      <button id="exitBtn">EXIT</button>
+      <img
+        id="logo"
+        src="images/logo.png"
+        alt="Company logo."
+        draggable="false"
+      />
+      <h2>HCT</h2>
+    </header>
+
+    <main id="mainContainer"></main>
+
+    <section id="screenOverlay" class="invisible">
+      <div id="menu">
+        <h1 id="toc">Table of Contents</h1>
+      </div>
+    </section>
+
+    <footer id="footer">
+      <button id="menuBtn" class="btn navBtn">MENU</button>
+
+      <nav id="navBox" class="floatRight">
+        <button id="prevBtn" class="btn navBtn">PREVIOUS</button>
+        <span id="pageReadout"></span>
+        <button id="nextBtn" class="btn navBtn">NEXT</button>
+      </nav>
+
+      <div id="audioBox" class="floatRight">
+        <audio id="audioPlayer"></audio>
+        <input id="progBar" class="progBar" type="range" value="0" max="0" />
+        <button id="volumeBtn" class="floatRight audioBtn">
+          <img
+            id="volImg"
+            class="playerImg"
+            src="images/fullvol.png"
+            alt="Volume button."
+            draggable="false"
+          />
+        </button>
+        <button id="replayBtn" class="floatRight audioBtn">
+          <img
+            id="replayImg"
+            class="playerImg"
+            src="images/replaygray.png"
+            alt="Replay audio button."
+            draggable="false"
+          />
+        </button>
+        <button id="playBtn" class="floatRight disabledAudioBtn">
+          <img
+            id="playImg"
+            class="playerImg"
+            src="images/playgray.png"
+            alt="Play and pause button."
+            draggable="false"
+          />
+        </button>
+      </div>
+    </footer>
+    <script src="./scripts/courseData.js"></script>
+    <script src="./scripts/audioPlayer.js"></script>
+    <script src="./scripts/pageFactory.js"></script>
+    <script src="./scripts/form.js"></script>
+    <script src="./scripts/polyfills.js"></script>
+    <script src="./scripts/router.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

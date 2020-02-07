@@ -142,18 +142,32 @@ function loader() {
     menuBtn = document.getElementById('menuBtn'),
     menu = document.getElementById('menu');
 
+  // addClass(menu, 'fadedOut');
+
   menuBtn.addEventListener('click', function() {
     if (hasClass(screenOverlay, 'invisible')) {
       removeClass(screenOverlay, 'invisible');
 
+      // setTimeout(open, 200);
+
       removeClass(menuBtn, 'btn');
       addClass(menuBtn, 'altBtn');
-    } else {
+    } else if (!hasClass(screenOverlay, 'invisible')) {
       addClass(screenOverlay, 'invisible');
+
+      // setTimeout(close, 200);
 
       removeClass(menuBtn, 'altBtn');
       addClass(menuBtn, 'btn');
     }
+
+    // function open() {
+    //   removeClass(menu, 'closed');
+    // }
+
+    // function close() {
+    //   addClass(menu, 'closed');
+    // }
   });
 
   // exit course window

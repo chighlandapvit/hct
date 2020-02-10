@@ -34,7 +34,6 @@ function loader() {
   //   'Wait a second...',
   //   'Hey, we gotta make this thing look right.'
   // );
-  getPlayerTime();
 
   initData();
   // read and distribute the dataSet
@@ -70,6 +69,8 @@ function loader() {
 
     // create first page and append to view
     createDisplay(currentPage[1].elements);
+
+    getPlayerTime();
   }
 
   // create table of contents menu with the data
@@ -184,7 +185,7 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex--;
 
-    removeAudioInfo();
+    removeMediaInfo();
 
     navBtnStatus();
 
@@ -209,7 +210,7 @@ function loader() {
     mainContainer.innerHTML = '';
     currentPageIndex++;
 
-    removeAudioInfo();
+    removeMediaInfo();
 
     navBtnStatus();
 

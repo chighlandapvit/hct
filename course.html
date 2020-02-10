@@ -35,7 +35,7 @@
         <button id="nextBtn" class="btn navBtn">NEXT</button>
       </nav>
 
-      <div id="audioBox" class="floatRight">
+      <div id="mediaBox" class="floatRight">
         <audio id="audioPlayer"></audio>
         <input id="progBar" class="progBar" type="range" value="0" max="0" />
         <button id="volumeBtn" class="floatRight audioBtn">
@@ -52,7 +52,7 @@
             id="replayImg"
             class="playerImg"
             src="images/replaygray.png"
-            alt="Replay audio button."
+            alt="Replay media button."
             draggable="false"
           />
         </button>
@@ -65,10 +65,11 @@
             draggable="false"
           />
         </button>
+        <video id="videoPlayer" class="invisible" preload="auto"></video>
       </div>
     </footer>
     <script src="./scripts/courseData.js"></script>
-    <script src="./scripts/audioPlayer.js"></script>
+    <script src="./scripts/mediaPlayer.js"></script>
     <script src="./scripts/pageFactory.js"></script>
     <script src="./scripts/form.js"></script>
     <script src="./scripts/polyfills.js"></script>

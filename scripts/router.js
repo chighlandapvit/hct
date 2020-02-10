@@ -15,7 +15,7 @@ function routePage(event) {
       pageReadout.innerHTML =
         'PAGE ' + currentPageIndex + ' OF ' + pages.length;
 
-      removeAudioInfo();
+      removeMediaInfo();
 
       navBtnStatus();
 

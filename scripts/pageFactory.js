@@ -15,8 +15,10 @@ function createDisplay(page) {
       createdElements.push(makeList(workingItem[1]));
     } else if (workingItem[0].match(/image/)) {
       createdElements.push(makeImg(workingItem[1]));
+      // } else if (workingItem[0].match(/video/)) {
+      //   createdElements.push(makeVideo(workingItem[1]));
     } else if (workingItem[0].match(/video/)) {
-      createdElements.push(makeVideo(workingItem[1]));
+      makeVideo(workingItem[1]);
     } else if (workingItem[0].match(/audio/)) {
       makeAudio(workingItem[1]);
     } else if (workingItem[0].match(/form/)) {
@@ -172,8 +174,8 @@ function makeList(listContent) {
 
 function makeImg(imgContent) {
   let img = document.createElement('img');
-  // img.setAttribute('src', 'images/' + imgContent.href);
-  img.setAttribute('src', imgContent.href);
+  // img.setAttribute('src', 'images/' + imgContent.src);
+  img.setAttribute('src', imgContent.src);
   img.setAttribute('alt', imgContent.altText);
   img.setAttribute('draggable', imgContent.draggable);
 
@@ -195,27 +197,44 @@ function makeImg(imgContent) {
   return img;
 }
 
+// function makeVideo(videoContent) {
+//   let video = document.createElement('video');
+//   addClass(video, 'video');
+//   // video.setAttribute('src', 'video/' + videoContent.src);
+//   video.setAttribute('src', videoContent.src);
+//   video.setAttribute('alt', videoContent.altText);
+//   // video.setAttribute('controls', '');
+//   // video.setAttribute('autoplay', '');
+
+//   // determine video float orientation
+//   if (videoContent.floatSide == 'left') {
+//     addClass(video, 'floatLeft');
+//   } else if (videoContent.floatSide == 'right') {
+//     addClass(video, 'floatRight');
+//   }
+
+//   return video;
+// }
+
 function makeVideo(videoContent) {
-  let video = document.createElement('video');
-  addClass(video, 'video');
-  // video.setAttribute('src', 'video/' + videoContent.href);
-  video.setAttribute('src', videoContent.href);
-  video.setAttribute('alt', videoContent.altText);
-  video.setAttribute('controls', '');
+  removeClass(videoPlayer, 'invisible');
+  videoPlayer.setAttribute('src', videoContent.src);
+  videoPlayer.setAttribute('alt', videoContent.altText);
+  videoPlayer.setAttribute('type', 'video/mp4');
   // video.setAttribute('autoplay', '');
 
   // determine video float orientation
   if (videoContent.floatSide == 'left') {
-    addClass(video, 'floatLeft');
+    addClass(videoPlayer, 'floatLeft');
   } else if (videoContent.floatSide == 'right') {
-    addClass(video, 'floatRight');
+    addClass(videoPlayer, 'floatRight');
   }
 
-  return video;
+  mainContainer.appendChild(videoPlayer);
 }
 
 function makeAudio(audioContent) {
-  audioPlayer.setAttribute('src', audioContent.href);
+  audioPlayer.setAttribute('src', audioContent.src);
   audioPlayer.setAttribute('type', 'audio/mpeg');
   // audioPlayer.setAttribute('autoplay', '');
 }
@@ -360,8 +379,8 @@ function makeDragAndDrop(dropContent) {
     addClass(dragItem, 'dragItem');
     dragItem.setAttribute('draggable', dropIcon[1].draggable);
     dragItem.setAttribute('ondragstart', 'onDragStart(event)');
-    // dragItem.setAttribute('src', 'images/' + workingItem[1].href);
-    dragItem.setAttribute('src', dropIcon[1].href);
+    // dragItem.setAttribute('src', 'images/' + workingItem[1].src);
+    dragItem.setAttribute('src', dropIcon[1].src);
     dragItem.setAttribute('alt', dropIcon[1].altText);
 
     dragSlot.appendChild(dragItem);

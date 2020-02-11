@@ -74,28 +74,28 @@ function loader() {
   }
 
   // create table of contents menu with the data
-  function makeMenu(modArr) {
+  function makeMenu(moduleArr) {
     let menu = document.getElementById('menu');
 
     let menuList = document.createElement('ul');
     menuList.setAttribute('id', 'menuList');
 
-    modArr.forEach(function(mod) {
-      let modBox = document.createElement('section');
-      addClass(modBox, 'modBox');
+    moduleArr.forEach(function(mod) {
+      let moduleBox = document.createElement('section');
+      addClass(moduleBox, 'moduleBox');
 
-      let modTitle = document.createElement('a');
-      addClass(modTitle, 'modTitle');
-      modTitle.innerHTML = mod[0];
+      let moduleTitle = document.createElement('a');
+      addClass(moduleTitle, 'moduleTitle');
+      moduleTitle.innerHTML = mod[0];
 
-      let modList = document.createElement('ul');
-      modList.setAttribute('id', mod[0]);
-      addClass(modList, 'modList');
-      addClass(modList, 'invisible');
+      let moduleList = document.createElement('ul');
+      moduleList.setAttribute('id', mod[0]);
+      addClass(moduleList, 'moduleList');
+      addClass(moduleList, 'invisible');
 
-      let modPages = Object.entries(mod[1]);
+      let modulePages = Object.entries(mod[1]);
 
-      modPages.forEach(function(page) {
+      modulePages.forEach(function(page) {
         let pageItem = document.createElement('li');
         addClass(pageItem, 'pageItem');
 
@@ -106,10 +106,10 @@ function loader() {
           page[1].pageName +
           '</a>';
 
-        modList.appendChild(pageItem);
+        moduleList.appendChild(pageItem);
       });
 
-      modTitle.addEventListener('click', function(event) {
+      moduleTitle.addEventListener('click', function(event) {
         event.preventDefault();
 
         let targetParent = event.target.parentElement,
@@ -124,10 +124,10 @@ function loader() {
         }
       });
 
-      modBox.appendChild(modTitle);
-      modBox.appendChild(modList);
+      moduleBox.appendChild(moduleTitle);
+      moduleBox.appendChild(moduleList);
 
-      menuList.appendChild(modBox);
+      menuList.appendChild(moduleBox);
     });
 
     // give the data to the router

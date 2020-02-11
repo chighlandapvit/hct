@@ -1,0 +1,104 @@
+.chalSubBtn,
+.choiceBtn,
+.optionOver {
+  transition: all 90ms ease-in-out;
+}
+
+.optionOver:hover,
+.choiceBtn:hover {
+  cursor: pointer;
+  color: #0000ff;
+}
+
+.optionDefault {
+  color: #696969;
+}
+
+.chalSubBtn {
+  margin-top: 1%;
+  padding: 0.6em;
+  font-weight: bold;
+  background-color: #fffafa;
+  color: #1f1f1f;
+  border: solid 0.05em #696969;
+}
+
+.chalSubBtn:hover {
+  cursor: pointer;
+  background-color: #1f1f1f;
+  color: #fffafa;
+  border: solid 0.05em #fffafa;
+  text-shadow: 0 0.2em 0.1em rgba(255, 255, 255, 0.205);
+  box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.445);
+}
+
+.chalSubBtn:active {
+  background-color: #fffafa;
+  color: #696969;
+  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.328);
+}
+
+.chalSubBtn:active {
+  border: solid 0.05em #0000ff;
+  -webkit-text-stroke: 0.02em #0000ff;
+  filter: brightness(80%);
+}
+
+/* drag and drop */
+.dropBoxContainer {
+  text-align: center;
+}
+
+.dragBox,
+.dropBox {
+  float: left;
+  margin-left: 3.3%;
+  padding: 0.5em;
+  min-width: 18.75em;
+  width: 45%;
+  height: 26em;
+  border: solid 0.1em #fffafa;
+}
+
+.dropBox p {
+  margin-top: 1%;
+  font-size: 0.8em;
+}
+
+.dragItem {
+  margin-top: 2.8%;
+  width: 90%;
+}
+
+.dragItem:hover {
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  cursor: -ms-grab;
+  cursor: grab;
+}
+
+.dragItem:active,
+.draggedItem {
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+  cursor: -ms-grabbing;
+  cursor: grabbing;
+}
+
+.dragSlot {
+  margin: 6% auto;
+  /* max-height: 6.5em; */
+  width: 90%;
+  height: 6.5em;
+  border-bottom: dashed 0.05em #fffafa;
+}
+
+.dropSlot {
+  margin: 1% auto;
+  min-height: 5.5em;
+  width: 90%;
+  height: 26.4%;
+  border: solid 0.05em #fffafa;
+  background: content-box no-repeat url('images/stripes.png');
+  background-size: cover;
+}

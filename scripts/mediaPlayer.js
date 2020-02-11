@@ -104,6 +104,7 @@ playBtn.addEventListener('click', function() {
     audioPlayer.play();
     playImg.setAttribute('src', 'images/pauseblack.png');
   } else if (videoPlayer.paused) {
+    videoPlayer.currentTime = curPlayTime;
     videoPlayer.play();
     playImg.setAttribute('src', 'images/pauseblack.png');
   }
